@@ -90,13 +90,13 @@ auto recv_data_handler = [this](const Base::AesCipherBuffer& request_data, Base:
 
 先上流程图：
 
-{% mermaid %}
+```mermaid
 graph TD;
   A-->B;
   A-->C;
   B-->D;
   C-->D;
-{% endmermaid %}
+```
 
 代码：
 
