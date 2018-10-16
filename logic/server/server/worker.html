@@ -1,0 +1,843 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>工作线程池 · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-luda-toggle-chapters/luda-toggle-chapters.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-luda-sticky-header/luda-sticky-header.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="../hunter.html" />
+    
+    
+    <link rel="prev" href="receiver.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" >
+            
+                <span>
+            
+                    
+                    前言
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.1.1" data-path="../../../">
+            
+                <a href="../../../">
+            
+                    
+                    项目的由来
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.1.2" data-path="../../../intro/what.html">
+            
+                <a href="../../../intro/what.html">
+            
+                    
+                    项目介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" >
+            
+                <span>
+            
+                    
+                    使用说明
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="../../../manual/query.html">
+            
+                <a href="../../../manual/query.html">
+            
+                    
+                    查询
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1.1" data-path="../../../manual/query/exp.html">
+            
+                <a href="../../../manual/query/exp.html">
+            
+                    
+                    查询表达式
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="../../../manual/task.html">
+            
+                <a href="../../../manual/task.html">
+            
+                    
+                    任务
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="../../../manual/other.html">
+            
+                <a href="../../../manual/other.html">
+            
+                    
+                    其他
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" >
+            
+                <span>
+            
+                    
+                    程序架构&核心代码
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="../../server.html">
+            
+                <a href="../../server.html">
+            
+                    
+                    服务端
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1.1" data-path="../clawer.html">
+            
+                <a href="../clawer.html">
+            
+                    
+                    信息抓取模块
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1.1.1" data-path="../clawer/clawer.md">
+            
+                <span>
+            
+                    
+                    页面抓取
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.1.2" data-path="../clawer/parser.md">
+            
+                <span>
+            
+                    
+                    数据解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.2" data-path="../server.html">
+            
+                <a href="../server.html">
+            
+                    
+                    请求处理模块
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1.2.1" data-path="receiver.html">
+            
+                <a href="receiver.html">
+            
+                    
+                    接收线程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.3.1.2.2" data-path="worker.html">
+            
+                <a href="worker.html">
+            
+                    
+                    工作线程池
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.3" data-path="../hunter.html">
+            
+                <a href="../hunter.html">
+            
+                    
+                    任务处理模块
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.4" data-path="../base.html">
+            
+                <a href="../base.html">
+            
+                    
+                    基本组件
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1.4.1" data-path="../base/jobquery.html">
+            
+                <a href="../base/jobquery.html">
+            
+                    
+                    职位查询器
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.4.2" data-path="../base/database.html">
+            
+                <a href="../base/database.html">
+            
+                    
+                    数据库管理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.4.3" data-path="../base/threadpool.html">
+            
+                <a href="../base/threadpool.html">
+            
+                    
+                    线程池
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="../../client.html">
+            
+                <a href="../../client.html">
+            
+                    
+                    客户端
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3" data-path="../../proto.html">
+            
+                <a href="../../proto.html">
+            
+                    
+                    通讯协议
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.3.1" data-path="../../proto/protobuf.html">
+            
+                <a href="../../proto/protobuf.html">
+            
+                    
+                    Protobuf
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" >
+            
+                <span>
+            
+                    
+                    附录
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" >
+            
+                <span>
+            
+                    
+                    代码
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1.1" >
+            
+                <span>
+            
+                    
+                    服务端(c++11)
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1.1.1" data-path="../../../code/server/udpserver.hpp.md">
+            
+                <span>
+            
+                    
+                    UdpServer.hpp
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../../.." >工作线程池</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h2 id="&#x5DE5;&#x4F5C;&#x7EBF;&#x7A0B;&#x6C60;">&#x5DE5;&#x4F5C;&#x7EBF;&#x7A0B;&#x6C60;</h2>
+<p>&#x524D;&#x9762;&#x8BB2;&#x5230;&#x4E86;&#x63A5;&#x6536;&#x7EBF;&#x7A0B;&#x5728;&#x6536;&#x5230;&#x65B0;&#x6570;&#x636E;&#x65F6;&#x4F1A;&#x5C06;&#x6570;&#x636E;&#x63D2;&#x5165;&#x961F;&#x5217;&#xFF0C;&#x90A3;&#x4E48;&#x5DE5;&#x4F5C;&#x7EBF;&#x7A0B;&#x81EA;&#x7136;&#x662F;&#x8981;&#x53D6;&#x6570;&#x636E;&#x4E86;&#xFF0C;&#x53D6;&#x6570;&#x636E;&#x7684;&#x4EE3;&#x7801;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre><code class="lang-c++"><span class="hljs-keyword">while</span> (<span class="hljs-literal">true</span>)
+{
+    <span class="hljs-built_in">std</span>::unique_lock&lt;<span class="hljs-built_in">std</span>::mutex&gt; lock(mutex_request_data_queue);
+    <span class="hljs-keyword">if</span> (request_data_queue.empty())
+    {
+        <span class="hljs-comment">//&#x5982;&#x679C;&#x961F;&#x5217;&#x4E3A;&#x7A7A;&#xFF0C;&#x5219;&#x963B;&#x585E;&#x7B49;&#x5F85;&#xFF0C;&#x76F4;&#x5230;&#x961F;&#x5217;&#x6709;&#x6570;&#x636E;&#x4E3A;&#x6B62;</span>
+        cv_queue_not_empty.wait(lock);
+    }
+    <span class="hljs-keyword">do</span>
+    {
+        <span class="hljs-comment">//&#x4ECE;&#x961F;&#x5217;&#x4E2D;&#x53D6;&#x51FA;&#x4E00;&#x4E2A;&#x8BF7;&#x6C42;&#xFF0C;&#x5E76;&#x5904;&#x7406;</span>
+        lock.lock();
+        <span class="hljs-keyword">auto</span> t = <span class="hljs-built_in">std</span>::move(request_data_queue.front()); 
+        request_data_queue.pop();
+        lock.unlock();
+
+        <span class="hljs-comment">//&#x63D0;&#x4EA4;&#x5230;&#x7EBF;&#x7A0B;&#x6C60;&#x6267;&#x884C;</span>
+        pool.execute([t = <span class="hljs-built_in">std</span>::move(t), &amp;recv_data_handler](){
+            recv_data_handler(t.first, t.second);
+        });        
+    } <span class="hljs-keyword">while</span> (!request_data_queue.empty());
+}
+</code></pre>
+<p>&#x8FD9;&#x91CC;&#x4F7F;&#x7528;&#x4E86;&#x6761;&#x4EF6;&#x53D8;&#x91CF;&#xFF0C;&#x5982;&#x679C;&#x961F;&#x5217;&#x4E3A;&#x7A7A;&#x5219;&#x4F1A;&#x5148;&#x4F11;&#x7720;&#xFF0C;&#x76F4;&#x5230;&#x88AB;&#x5524;&#x9192;&#x3002;&#x88AB;&#x5524;&#x9192;&#x540E;&#xFF0C;&#x5FAA;&#x73AF;&#x4ECE;&#x961F;&#x5217;&#x53D6;&#x51FA;&#x6570;&#x636E;&#xFF0C;&#x4EA4;&#x7ED9;&#x7EBF;&#x7A0B;&#x6C60;&#x6267;&#x884C;&#x5177;&#x4F53;&#x4E1A;&#x52A1;&#xFF0C;&#x76F4;&#x5230;&#x961F;&#x5217;&#x518D;&#x6B21;&#x4E3A;&#x7A7A;&#x3002;</p>
+<p>&#x9014;&#x4E2D;&#x6709;&#x6570;&#x6B21;&#x4E0A;&#x9501;&#x89E3;&#x9501;&#x7684;&#x64CD;&#x4F5C;&#xFF0C;&#x6765;&#x4FDD;&#x8BC1;&#x961F;&#x5217;&#x7684;&#x7EBF;&#x7A0B;&#x5B89;&#x5168;&#x3002;</p>
+<p>&#xFF08;&#x5173;&#x4E8E;&#x7EBF;&#x7A0B;&#x6C60;&#x6211;&#x81EA;&#x5DF1;&#x6CA1;&#x6709;&#x9020;&#x8F6E;&#x5B50;&#xFF0C;&#x66F4;&#x591A;&#x53C2;&#x8003;&#x4E86;&#x7F51;&#x4E0A;&#x7684;&#x4EE3;&#x7801;&#x3002;&#x4F46;&#x7ECF;&#x8FC7;&#x591A;&#x756A;&#x5BF9;&#x6BD4;&#x540E;&#x6211;&#x53D1;&#x73B0;&#x6709;&#x4E9B;&#x7EBF;&#x7A0B;&#x6C60;&#x7684;&#x5B9E;&#x73B0;&#x662F;&#x6709;&#x95EE;&#x9898;&#x7684;&#xFF0C;&#x6240;&#x4EE5;&#x8BF4;&#x7528;&#x522B;&#x4EBA;&#x7684;&#x4E1C;&#x897F;&#x8FD8;&#x662F;&#x8981;&#x8C28;&#x614E;&#x3002;&#x5173;&#x4E8E;&#x6211;&#x5BF9;&#x7EBF;&#x7A0B;&#x6C60;&#x7684;&#x8003;&#x5BDF;&#xFF0C;&#x6709;&#x5174;&#x8DA3;&#x53EF;&#x4EE5;&#x770B;&#x770B;&#xFF1A;<a href="../base/threadpool.html">&#x7EBF;&#x7A0B;&#x6C60;</a>&#xFF09;</p>
+<p>&#x7136;&#x540E;&#x5C31;&#x662F;&#x5BF9;&#x6570;&#x636E;&#x7684;&#x89E3;&#x5BC6;&#xFF0C;&#x5224;&#x65AD;&#x51FA;&#x7C7B;&#x522B;&#xFF0C;&#x5728;&#x6267;&#x884C;&#x76F8;&#x5E94;&#x7684;&#x4EE3;&#x7801;&#x3002;&#x6570;&#x636E;&#x5305;&#x7684;&#x52A0;&#x5BC6;&#x89E3;&#x5BC6;&#x4F7F;&#x7528;aes-128-gcm&#x7B97;&#x6CD5;&#xFF0C;&#x6570;&#x636E;&#x4F7F;&#x7528;protobuf&#x5305;&#x88C5;&#xFF0C;&#x8BE6;&#x7EC6;&#x8BF7;&#x770B;<a href="../../proto.html">&#x901A;&#x8BAF;&#x534F;&#x8BAE;</a>&#x73AF;&#x8282;&#x3002;</p>
+<pre><code class="lang-c++"><span class="hljs-keyword">auto</span> recv_data_handler = [<span class="hljs-keyword">this</span>](<span class="hljs-keyword">const</span> Base::AesCipherBuffer&amp; request_data, Base::AsioServer::ResponseSender* response_sender_ptr){
+
+    <span class="hljs-comment">//&#x79D8;&#x94A5;</span>
+    <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span>* key = Conf.AesKey.c_str();
+
+    <span class="hljs-keyword">char</span> request_buff[<span class="hljs-number">1024</span>];
+    <span class="hljs-comment">//&#x5BF9;&#x6536;&#x5230;&#x7684;&#x6570;&#x636E;&#x8FDB;&#x884C;AES&#x89E3;&#x5BC6;</span>
+    <span class="hljs-keyword">int</span> ret_size = Common::CryptoHelper::AES_128_GCM_Decrypt(request_data.const_pointer() + <span class="hljs-number">2</span>, request_data.size() - <span class="hljs-number">2</span>, key, request_buff);
+
+    <span class="hljs-comment">//&#x5C06;&#x6570;&#x636E;&#x5305;&#x8FD8;&#x539F;&#x6210;protobuf&#x5BF9;&#x8C61;</span>
+    TencentJobHunterMessage::Request request;
+    <span class="hljs-keyword">if</span> (request.ParseFromArray(request_buff, ret_size))
+    {
+        <span class="hljs-keyword">switch</span> (request.type())
+        {
+        <span class="hljs-keyword">case</span> TencentJobHunterMessage::Type::LOGIN:
+            _deal_with_login_request(request, response_sender_ptr);
+            <span class="hljs-keyword">break</span>;
+        <span class="hljs-keyword">case</span> TencentJobHunterMessage::Type::REGISTER:
+            _deal_with_register_request(request, response_sender_ptr);
+            <span class="hljs-keyword">break</span>;
+        <span class="hljs-keyword">case</span> TencentJobHunterMessage::Type::ADD_JOB_QUERY:
+            _deal_with_new_job_query_request(request, response_sender_ptr);
+            <span class="hljs-keyword">break</span>;
+        <span class="hljs-comment">//...&#x6839;&#x636E;&#x7C7B;&#x522B;&#x6267;&#x884C;&#x4E0D;&#x540C;&#x7684;&#x4E1A;&#x52A1;&#x903B;&#x8F91;&#xFF0C;&#x6570;&#x91CF;&#x8F83;&#x591A;&#x5C31;&#x4E0D;&#x94FA;&#x5F00;&#x4E86;</span>
+        }
+    }
+    <span class="hljs-keyword">else</span>
+    {
+        <span class="hljs-built_in">log</span>.debug_with_data(<span class="hljs-string">&quot;&#x89E3;&#x6790;&#x54CD;&#x5E94;&#x65F6;&#x51FA;&#x9519;&#xFF0C;&#x5199;&#x5165;&#x89E3;&#x5BC6;&#x524D;&#x6570;&#x636E;&#x4FE1;&#x606F;&quot;</span>, request_data.const_pointer(), request_data.size());
+        <span class="hljs-built_in">log</span>.debug_with_data(<span class="hljs-string">&quot;&#x5199;&#x5165;&#x89E3;&#x5BC6;&#x540E;&#x6570;&#x636E;&#x4FE1;&#x606F;&quot;</span>, request_buff, ret_size);
+        <span class="hljs-comment">//&#x89E3;&#x6790;&#x54CD;&#x5E94;&#x65F6;&#x51FA;&#x9519;&#xFF0C;&#x66F4;&#x65B0;&#x53D1;&#x9001;&#x5668;&#x72B6;&#x6001;</span>
+        response_sender_ptr-&gt;set_status_parse_error();
+    }
+};
+</code></pre>
+<h4 id="&#x5177;&#x4F53;&#x4E1A;&#x52A1;&#x903B;&#x8F91;">&#x5177;&#x4F53;&#x4E1A;&#x52A1;&#x903B;&#x8F91;</h4>
+<p>&#x8BF7;&#x6C42;&#x5BF9;&#x5E94;&#x7684;&#x5177;&#x4F53;&#x4E1A;&#x52A1;&#x903B;&#x8F91;&#x6211;&#x53EA;&#x6253;&#x7B97;&#x9009;&#x8BB2;&#xFF0C;&#x6BD5;&#x7ADF;&#x79CD;&#x7C7B;&#x592A;&#x591A;&#xFF08;&#x767B;&#x5F55;&#x3001;&#x6CE8;&#x518C;&#x3001;&#x67E5;&#x8BE2;&#x3001;&#x5220;&#x9664;&#x67E5;&#x8BE2;&#x8BB0;&#x5F55;&#x3001;&#x67E5;&#x770B;&#x804C;&#x4F4D;&#x8BE6;&#x60C5;&#x3001;&#x6DFB;&#x52A0;&#x4EFB;&#x52A1;&#x3001;&#x5220;&#x9664;&#x4EFB;&#x52A1;&#x7B49;&#x7B49;&#xFF09;&#x5168;&#x90E8;&#x5C55;&#x5F00;&#x6765;&#x5C31;&#x592A;&#x591A;&#x4E86;&#xFF0C;&#x800C;&#x4E14;&#x5185;&#x5BB9;&#x5927;&#x540C;&#x5C0F;&#x5F02;&#x6CA1;&#x5FC5;&#x8981;&#x5168;&#x90E8;&#x8BB2;&#x3002;</p>
+<p>&#x63A5;&#x4E0B;&#x6765;&#x8BB2;&#x89E3;&#x4E00;&#x4E0B;&#x767B;&#x5F55;&#x548C;&#x67E5;&#x8BE2;&#x8BF7;&#x6C42;&#x7684;&#x5904;&#x7406;&#xFF1A;</p>
+<h5 id="&#x767B;&#x5F55;">&#x767B;&#x5F55;</h5>
+<p>&#x5148;&#x4E0A;&#x6D41;&#x7A0B;&#x56FE;&#xFF1A;</p>
+<p>
+<!--mermaid-->
+<div>
+<svg id="mermaid-1539678869182" width="100%" xmlns="http://www.w3.org/2000/svg" style="max-width: 124.640625px;" viewbox="0 0 124.640625 233"><style>#mermaid-1539678869182 .label{font-family:trebuchet ms,verdana,arial;color:#333}#mermaid-1539678869182 .node circle,#mermaid-1539678869182 .node ellipse,#mermaid-1539678869182 .node polygon,#mermaid-1539678869182 .node rect{fill:#cde498;stroke:#13540c;stroke-width:1px}#mermaid-1539678869182 .node.clickable{cursor:pointer}#mermaid-1539678869182 .arrowheadPath{fill:green}#mermaid-1539678869182 .edgePath .path{stroke:green;stroke-width:1.5px}#mermaid-1539678869182 .edgeLabel{background-color:#e8e8e8}#mermaid-1539678869182 .cluster rect{fill:#cdffb2!important;stroke:#6eaa49!important;stroke-width:1px!important}#mermaid-1539678869182 .cluster text{fill:#333}#mermaid-1539678869182 div.mermaidTooltip{position:absolute;text-align:center;max-width:200px;padding:2px;font-family:trebuchet ms,verdana,arial;font-size:12px;background:#cdffb2;border:1px solid #6eaa49;border-radius:2px;pointer-events:none;z-index:100}#mermaid-1539678869182 .actor{stroke:#13540c;fill:#cde498}#mermaid-1539678869182 text.actor{fill:#000;stroke:none}#mermaid-1539678869182 .actor-line{stroke:grey}#mermaid-1539678869182 .messageLine0{marker-end:"url(#arrowhead)"}#mermaid-1539678869182 .messageLine0,#mermaid-1539678869182 .messageLine1{stroke-width:1.5;stroke-dasharray:"2 2";stroke:#333}#mermaid-1539678869182 #arrowhead{fill:#333}#mermaid-1539678869182 #crosshead path{fill:#333!important;stroke:#333!important}#mermaid-1539678869182 .messageText{fill:#333;stroke:none}#mermaid-1539678869182 .labelBox{stroke:#326932;fill:#cde498}#mermaid-1539678869182 .labelText,#mermaid-1539678869182 .loopText{fill:#000;stroke:none}#mermaid-1539678869182 .loopLine{stroke-width:2;stroke-dasharray:"2 2";marker-end:"url(#arrowhead)";stroke:#326932}#mermaid-1539678869182 .note{stroke:#6eaa49;fill:#fff5ad}#mermaid-1539678869182 .noteText{fill:#000;stroke:none;font-family:trebuchet ms,verdana,arial;font-size:14px}#mermaid-1539678869182 .section{stroke:none;opacity:.2}#mermaid-1539678869182 .section0,#mermaid-1539678869182 .section2{fill:#6eaa49}#mermaid-1539678869182 .section1,#mermaid-1539678869182 .section3{fill:#fff;opacity:.2}#mermaid-1539678869182 .sectionTitle0,#mermaid-1539678869182 .sectionTitle1,#mermaid-1539678869182 .sectionTitle2,#mermaid-1539678869182 .sectionTitle3{fill:#333}#mermaid-1539678869182 .sectionTitle{text-anchor:start;font-size:11px;text-height:14px}#mermaid-1539678869182 .grid .tick{stroke:#d3d3d3;opacity:.3;shape-rendering:crispEdges}#mermaid-1539678869182 .grid path{stroke-width:0}#mermaid-1539678869182 .today{fill:none;stroke:red;stroke-width:2px}#mermaid-1539678869182 .task{stroke-width:2}#mermaid-1539678869182 .taskText{text-anchor:middle;font-size:11px}#mermaid-1539678869182 .taskTextOutsideRight{fill:#000;text-anchor:start;font-size:11px}#mermaid-1539678869182 .taskTextOutsideLeft{fill:#000;text-anchor:end;font-size:11px}#mermaid-1539678869182 .taskText0,#mermaid-1539678869182 .taskText1,#mermaid-1539678869182 .taskText2,#mermaid-1539678869182 .taskText3{fill:#fff}#mermaid-1539678869182 .task0,#mermaid-1539678869182 .task1,#mermaid-1539678869182 .task2,#mermaid-1539678869182 .task3{fill:#487e3a;stroke:#13540c}#mermaid-1539678869182 .taskTextOutside0,#mermaid-1539678869182 .taskTextOutside1,#mermaid-1539678869182 .taskTextOutside2,#mermaid-1539678869182 .taskTextOutside3{fill:#000}#mermaid-1539678869182 .active0,#mermaid-1539678869182 .active1,#mermaid-1539678869182 .active2,#mermaid-1539678869182 .active3{fill:#cde498;stroke:#13540c}#mermaid-1539678869182 .activeText0,#mermaid-1539678869182 .activeText1,#mermaid-1539678869182 .activeText2,#mermaid-1539678869182 .activeText3{fill:#000!important}#mermaid-1539678869182 .done0,#mermaid-1539678869182 .done1,#mermaid-1539678869182 .done2,#mermaid-1539678869182 .done3{stroke:grey;fill:#d3d3d3;stroke-width:2}#mermaid-1539678869182 .doneText0,#mermaid-1539678869182 .doneText1,#mermaid-1539678869182 .doneText2,#mermaid-1539678869182 .doneText3{fill:#000!important}#mermaid-1539678869182 .crit0,#mermaid-1539678869182 .crit1,#mermaid-1539678869182 .crit2,#mermaid-1539678869182 .crit3{stroke:#f88;fill:red;stroke-width:2}#mermaid-1539678869182 .activeCrit0,#mermaid-1539678869182 .activeCrit1,#mermaid-1539678869182 .activeCrit2,#mermaid-1539678869182 .activeCrit3{stroke:#f88;fill:#cde498;stroke-width:2}#mermaid-1539678869182 .doneCrit0,#mermaid-1539678869182 .doneCrit1,#mermaid-1539678869182 .doneCrit2,#mermaid-1539678869182 .doneCrit3{stroke:#f88;fill:#d3d3d3;stroke-width:2;cursor:pointer;shape-rendering:crispEdges}#mermaid-1539678869182 .activeCritText0,#mermaid-1539678869182 .activeCritText1,#mermaid-1539678869182 .activeCritText2,#mermaid-1539678869182 .activeCritText3,#mermaid-1539678869182 .doneCritText0,#mermaid-1539678869182 .doneCritText1,#mermaid-1539678869182 .doneCritText2,#mermaid-1539678869182 .doneCritText3{fill:#000!important}#mermaid-1539678869182 .titleText{text-anchor:middle;font-size:18px;fill:#000}#mermaid-1539678869182 g.classGroup text{fill:#13540c;stroke:none;font-family:trebuchet ms,verdana,arial;font-size:10px}#mermaid-1539678869182 g.classGroup rect{fill:#cde498;stroke:#13540c}#mermaid-1539678869182 g.classGroup line{stroke:#13540c;stroke-width:1}#mermaid-1539678869182 .classLabel .box{stroke:none;stroke-width:0;fill:#cde498;opacity:.5}#mermaid-1539678869182 .classLabel .label{fill:#13540c;font-size:10px}#mermaid-1539678869182 .relation{stroke:#13540c;stroke-width:1;fill:none}#mermaid-1539678869182 #compositionEnd,#mermaid-1539678869182 #compositionStart{fill:#13540c;stroke:#13540c;stroke-width:1}#mermaid-1539678869182 #aggregationEnd,#mermaid-1539678869182 #aggregationStart{fill:#cde498;stroke:#13540c;stroke-width:1}#mermaid-1539678869182 #dependencyEnd,#mermaid-1539678869182 #dependencyStart,#mermaid-1539678869182 #extensionEnd,#mermaid-1539678869182 #extensionStart{fill:#13540c;stroke:#13540c;stroke-width:1}#mermaid-1539678869182 .branch-label,#mermaid-1539678869182 .commit-id,#mermaid-1539678869182 .commit-msg{fill:#d3d3d3;color:#d3d3d3}</style><style>#mermaid-1539678869182 {
+    color: rgb(0, 0, 0);
+    font: normal normal 400 normal 16px / normal "Times New Roman";
+  }</style><g transform="translate(-12, -12)"><g class="output"><g class="clusters"/><g class="edgePaths"><g class="edgePath" style="opacity: 1;"><path class="path" d="M59.47265625,56.01492169802029L34.53125,84L34.53125,109" marker-end="url(#arrowhead14)" style="fill:none"/><defs><marker id="arrowhead14" viewbox="0 0 10 10" refx="9" refy="5" markerunits="strokeWidth" markerwidth="8" markerheight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"/></marker></defs></g><g class="edgePath" style="opacity: 1;"><path class="path" d="M88.91015625,56.01492169802029L113.8515625,84L113.8515625,109" marker-end="url(#arrowhead15)" style="fill:none"/><defs><marker id="arrowhead15" viewbox="0 0 10 10" refx="9" refy="5" markerunits="strokeWidth" markerwidth="8" markerheight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"/></marker></defs></g><g class="edgePath" style="opacity: 1;"><path class="path" d="M34.53125,148L34.53125,173L59.28515625,200.77469713385207" marker-end="url(#arrowhead16)" style="fill:none"/><defs><marker id="arrowhead16" viewbox="0 0 10 10" refx="9" refy="5" markerunits="strokeWidth" markerwidth="8" markerheight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"/></marker></defs></g><g class="edgePath" style="opacity: 1;"><path class="path" d="M113.8515625,148L113.8515625,173L89.09765625,200.77469713385207" marker-end="url(#arrowhead17)" style="fill:none"/><defs><marker id="arrowhead17" viewbox="0 0 10 10" refx="9" refy="5" markerunits="strokeWidth" markerwidth="8" markerheight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"/></marker></defs></g></g><g class="edgeLabels"><g class="edgeLabel" transform="" style="opacity: 1;"><g transform="translate(0,0)" class="label"><foreignobject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="edgeLabel"/></div></foreignobject></g></g><g class="edgeLabel" transform="" style="opacity: 1;"><g transform="translate(0,0)" class="label"><foreignobject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="edgeLabel"/></div></foreignobject></g></g><g class="edgeLabel" transform="" style="opacity: 1;"><g transform="translate(0,0)" class="label"><foreignobject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="edgeLabel"/></div></foreignobject></g></g><g class="edgeLabel" transform="" style="opacity: 1;"><g transform="translate(0,0)" class="label"><foreignobject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="edgeLabel"/></div></foreignobject></g></g></g><g class="nodes"><g class="node" id="A" transform="translate(74.19140625,39.5)" style="opacity: 1;"><rect rx="0" ry="0" x="-14.71875" y="-19.5" width="29.4375" height="39"/><g class="label" transform="translate(0,0)"><g transform="translate(-4.71875,-9.5)"><foreignobject width="9.4375" height="19"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">A</div></foreignobject></g></g></g><g class="node" id="B" transform="translate(34.53125,128.5)" style="opacity: 1;"><rect rx="0" ry="0" x="-14.53125" y="-19.5" width="29.0625" height="39"/><g class="label" transform="translate(0,0)"><g transform="translate(-4.53125,-9.5)"><foreignobject width="9.0625" height="19"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">B</div></foreignobject></g></g></g><g class="node" id="C" transform="translate(113.8515625,128.5)" style="opacity: 1;"><rect rx="0" ry="0" x="-14.7890625" y="-19.5" width="29.578125" height="39"/><g class="label" transform="translate(0,0)"><g transform="translate(-4.7890625,-9.5)"><foreignobject width="9.578125" height="19"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">C</div></foreignobject></g></g></g><g class="node" id="D" transform="translate(74.19140625,217.5)" style="opacity: 1;"><rect rx="0" ry="0" x="-14.90625" y="-19.5" width="29.8125" height="39"/><g class="label" transform="translate(0,0)"><g transform="translate(-4.90625,-9.5)"><foreignobject width="9.8125" height="19"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">D</div></foreignobject></g></g></g></g></g></g></svg>
+</div>
+<!--endmermaid-->
+
+</p>
+<p>&#x4EE3;&#x7801;&#xFF1A;</p>
+<pre><code class="lang-c++"><span class="hljs-keyword">void</span> TencentJobUserServer::_deal_with_login_request(<span class="hljs-keyword">const</span> TencentJobHunterMessage::Request&amp; request, Base::AsioServer::ResponseSender* response_sender_ptr)
+{
+    <span class="hljs-comment">//&#x79D8;&#x94A5;</span>
+    <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span>* key = Conf.AesKey.c_str();
+
+    <span class="hljs-comment">//&#x521B;&#x5EFA;&#x54CD;&#x5E94;&#x4FE1;&#x606F;</span>
+    TencentJobHunterMessage::Response response;
+    response.set_type(TencentJobHunterMessage::Type::LOGIN);
+    response.set_request_time(request.request_time());
+
+    <span class="hljs-comment">//&#x89E3;&#x6790;&#x5BA2;&#x6237;&#x7AEF;&#x8BF7;&#x6C42;</span>
+    <span class="hljs-keyword">bool</span> success_flag = <span class="hljs-literal">false</span>;
+    Model::User* user;
+    Model::Session* session;
+    <span class="hljs-built_in">std</span>::<span class="hljs-built_in">string</span> session_id = request.session();
+
+    <span class="hljs-keyword">if</span> (session_id != <span class="hljs-string">&quot;&quot;</span>)
+    {
+        <span class="hljs-keyword">if</span> ((session = Model::Session::GetSessionPointer(request.session())) != <span class="hljs-literal">nullptr</span>){
+            <span class="hljs-comment">//&#x57FA;&#x4E8E;session&#x7684;&#x5FEB;&#x901F;&#x767B;&#x5F55;</span>
+            user = &amp;session-&gt;get_user();
+            success_flag = <span class="hljs-literal">true</span>;
+        }
+        <span class="hljs-keyword">else</span>
+        {
+            _send_response(response, response_sender_ptr, TencentJobHunterMessage::ErrorCode::SESSION_INVALID_ID);
+            <span class="hljs-keyword">return</span>;
+        }
+    }
+    <span class="hljs-keyword">else</span>
+    {
+        <span class="hljs-built_in">std</span>::<span class="hljs-built_in">string</span> username = request.username();
+        <span class="hljs-built_in">std</span>::<span class="hljs-built_in">string</span> password = request.password();
+
+        user = Model::User::GetPointer(username);
+
+        <span class="hljs-keyword">if</span> (user != <span class="hljs-literal">nullptr</span>)
+        {
+            <span class="hljs-built_in">std</span>::<span class="hljs-built_in">string</span> salt = user-&gt;get_salt();
+            <span class="hljs-built_in">std</span>::<span class="hljs-built_in">string</span> m_pass_md5 = user-&gt;get_pass();
+            <span class="hljs-built_in">std</span>::<span class="hljs-built_in">string</span> pass_md5 = Common::CryptoHelper::MD5(password, salt);
+
+            <span class="hljs-comment">//&#x5BC6;&#x7801;&#x6BD4;&#x5BF9;&#x6B63;&#x786E;&#xFF0C;&#x767B;&#x5F55;&#x6210;&#x529F;</span>
+            <span class="hljs-keyword">if</span> (pass_md5 == m_pass_md5)
+            {
+                success_flag = <span class="hljs-literal">true</span>;
+
+                <span class="hljs-comment">//&#x521B;&#x5EFA;session&#x5E76;&#x4FDD;&#x5B58;</span>
+                <span class="hljs-comment">//&#x5982;&#x679C;&#x6CA1;&#x6709;session_id&#x5219;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x5168;&#x65B0;&#x7684;</span>
+                <span class="hljs-keyword">if</span> (!Model::Session::GetSessionIdByUser(*user, session_id))
+                {
+                    Model::Session&amp; session =
+                        Model::Session::CreateSession(*user);
+                    session_id = session.get_id();
+                    user-&gt;set_session(session_id);
+                }
+            }
+        }
+    }
+
+    <span class="hljs-keyword">if</span> (success_flag)
+    {
+        <span class="hljs-comment">//&#x5C06;session&#x5199;&#x5165;response</span>
+        response.set_session(session_id);
+
+        <span class="hljs-comment">//&#x5199;&#x5165;&#x804C;&#x4F4D;&#x7C7B;&#x578B;&#x6620;&#x5C04;&#x6D88;&#x606F;</span>
+        response.mutable_job_related_info()-&gt;CopyFrom(Model::Job::GetRelatedInfo());
+
+        <span class="hljs-comment">//&#x5199;&#x5165;&#x67E5;&#x8BE2;&#x7ED3;&#x679C;&#x8BB0;&#x5F55;&#xFF08;&#x53EA;&#x5199;&#x5165;&#x6982;&#x8981;&#x4FE1;&#x606F;&#xFF0C;&#x4E0D;&#x5199;&#x5165;&#x8BE6;&#x7EC6;&#x6570;&#x636E;&#xFF09;</span>
+        user-&gt;set_query_result_info_proto(response.mutable_job_query_result_info());
+
+        <span class="hljs-comment">//TASK&#x5217;&#x8868;&#x7684;HASH&#xFF0C;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;HASH&#x503C;&#x662F;&#x5426;&#x6539;&#x53D8;&#x6765;&#x5224;&#x65AD;&#x4EFB;&#x52A1;&#x5217;&#x8868;&#x4EE5;&#x53CA;&#x67E5;&#x8BE2;&#x7ED3;&#x679C;&#x662F;&#x5426;&#x6709;&#x53D8;&#x5316;</span>
+        response.set_task_query_result_changed_time(user-&gt;get_task_query_result_changed_time());
+
+
+        response.set_error_code(TencentJobHunterMessage::ErrorCode::SUCCESS);
+    }
+    <span class="hljs-keyword">else</span>
+    {
+        <span class="hljs-comment">//&#x5931;&#x8D25;&#x8FD4;&#x56DE;1001&#xFF08;&#x7528;&#x6237;&#x540D;&#x5BC6;&#x7801;&#x9519;&#x8BEF;&#xFF09;  </span>
+        response.set_error_code(TencentJobHunterMessage::ErrorCode::LOGIN_INCORRECT_PASS);
+    }
+
+    _send_response(response, response_sender_ptr);
+
+}
+</code></pre>
+<p>&#x53EF;&#x4EE5;&#x770B;&#x5230;&#xFF0C;&#x767B;&#x5F55;&#x5206;&#x4E3A;&#x4E24;&#x79CD;&#xFF0C;&#x4E00;&#x79CD;&#x662F;&#x57FA;&#x4E8E;session&#x7684;&#x5FEB;&#x901F;&#x767B;&#x5F55;&#xFF0C;&#x4E00;&#x79CD;&#x662F;&#x57FA;&#x4E8E;&#x7528;&#x6237;&#x540D;&#x5BC6;&#x7801;&#x7684;&#x767B;&#x5F55;&#x3002;</p>
+<p>&#x5728;&#x7B2C;&#x4E00;&#x6B21;&#x767B;&#x5F55;&#x65F6;&#x4F1A;&#x4F7F;&#x7528;&#x7528;&#x6237;&#x540D;&#x5BC6;&#x7801;&#xFF0C;&#x4E00;&#x65E6;&#x6210;&#x529F;&#x767B;&#x5F55;&#x8FC7;&#xFF0C;&#x5BA2;&#x6237;&#x7AEF;&#x4E0B;&#x6B21;&#x4F1A;&#x4F7F;&#x7528;&#x670D;&#x52A1;&#x7AEF;&#x8FD4;&#x56DE;&#x7684;session&#x6765;&#x5FEB;&#x901F;&#x767B;&#x5F55;&#xFF0C;&#x76F4;&#x5230;session&#x5931;&#x6548;&#x3002;</p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="receiver.html" class="navigation navigation-prev " aria-label="Previous page: 接收线程">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="../hunter.html" class="navigation navigation-next " aria-label="Next page: 任务处理模块">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"工作线程池","level":"1.3.1.2.2","depth":4,"next":{"title":"任务处理模块","level":"1.3.1.3","depth":3,"path":"logic/server/hunter.md","ref":"logic/server/hunter.md","articles":[]},"previous":{"title":"接收线程","level":"1.3.1.2.1","depth":4,"path":"logic/server/server/receiver.md","ref":"logic/server/server/receiver.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["luda-toggle-chapters","luda-sticky-header","mermaid-flow","livereload"],"pluginsConfig":{"livereload":{},"search":{},"luda-sticky-header":{"myConfigKey":"it's the default value"},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"mermaid-flow":{},"highlight":{},"luda-toggle-chapters":{"myConfigKey":"it's the default value"},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"logic/server/server/worker.md","mtime":"2018-10-16T08:09:55.231Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-10-16T08:33:55.531Z"},"basePath":"../../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../../../gitbook/gitbook.js"></script>
+    <script src="../../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-luda-toggle-chapters/luda-toggle-chapters.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-luda-sticky-header/luda-sticky-header.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-livereload/plugin.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

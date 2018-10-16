@@ -1,0 +1,21 @@
+.book-header{
+  position: fixed;
+  background: white;
+  width: 100%;
+}
+.page-inner{
+  padding-top: 50px;
+}
+@media (max-width: 600px) {
+    .book-summary {
+        width:300px !important;
+        left: -300px;
+    }
+    .book.with-summary .book-body {
+        -webkit-transform: none;
+        -moz-transform: none;
+        -ms-transform:  none;
+        -o-transform:  none;
+        transform:  none;
+    }
+}
