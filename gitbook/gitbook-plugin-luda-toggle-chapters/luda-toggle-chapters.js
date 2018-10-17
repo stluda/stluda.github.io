@@ -9,7 +9,7 @@ require(['gitbook', 'jQuery'], function(gitbook, $) {
 	  $(".chapter").each(function(i,chapter){
 		  if(hasChildren(chapter)){
 			  $(chapter).children("span,a")
-				  .after($('<a class="nav-toggle material-icons"></a>')
+				  .after($('<span class="nav-toggle material-icons"></span>')
 				  .click(function(){
 				  if($(this).hasClass("nav-toggle-collapsed")){
 					  expand($(this).parent());
