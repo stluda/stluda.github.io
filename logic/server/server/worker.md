@@ -1,5 +1,21 @@
 ## 工作线程池
 
+整体流程图如下：
+```mermaid
+graph TD
+A[从队列取出数据] -->B{解密并还原成<br>protobuf对象}
+B -- 成功 --> D
+D{判断类型执行<br/>相应业务逻辑}
+D -->|登录|E(登录逻辑) 
+D -->|查询| F(查询逻辑)
+D -->|...| G(...)
+B -- 失败 --> C[将发送器状态置为失败]
+E -->H
+F -->H
+G --> H
+H[发送响应数据回给客户端]
+```
+
 前面讲到了接收线程在收到新数据时会将数据插入队列，那么工作线程自然是要取数据了，取数据的代码如下：
 
 ```c++
@@ -77,121 +93,4 @@ auto recv_data_handler = [this](const Base::AesCipherBuffer& request_data, Base:
 ```
 
 
-
-#### 具体业务逻辑
-
-请求对应的具体业务逻辑我只打算选讲，毕竟种类太多（登录、注册、查询、删除查询记录、查看职位详情、添加任务、删除任务等等）全部展开来就太多了，而且内容大同小异没必要全部讲。
-
-
-
-接下来讲解一下登录和查询请求的处理：
-
-##### 登录
-
-先上流程图：
-
-```mermaid
-graph TD;
-  A-->B;
-  A-->C;
-  B-->D;
-  C-->D;
-```
-
-代码：
-
-```c++
-void TencentJobUserServer::_deal_with_login_request(const TencentJobHunterMessage::Request& request, Base::AsioServer::ResponseSender* response_sender_ptr)
-{
-	//秘钥
-	const char* key = Conf.AesKey.c_str();
-
-	//创建响应信息
-	TencentJobHunterMessage::Response response;
-	response.set_type(TencentJobHunterMessage::Type::LOGIN);
-	response.set_request_time(request.request_time());
-
-	//解析客户端请求
-	bool success_flag = false;
-	Model::User* user;
-	Model::Session* session;
-	std::string session_id = request.session();
-
-	if (session_id != "")
-	{
-		if ((session = Model::Session::GetSessionPointer(request.session())) != nullptr){
-			//基于session的快速登录
-			user = &session->get_user();
-			success_flag = true;
-		}
-		else
-		{
-			_send_response(response, response_sender_ptr, TencentJobHunterMessage::ErrorCode::SESSION_INVALID_ID);
-			return;
-		}
-	}
-	else
-	{
-		std::string username = request.username();
-		std::string password = request.password();
-
-		user = Model::User::GetPointer(username);
-
-		if (user != nullptr)
-		{
-			std::string salt = user->get_salt();
-			std::string m_pass_md5 = user->get_pass();
-			std::string pass_md5 = Common::CryptoHelper::MD5(password, salt);
-
-			//密码比对正确，登录成功
-			if (pass_md5 == m_pass_md5)
-			{
-				success_flag = true;
-
-				//创建session并保存
-				//如果没有session_id则创建一个全新的
-				if (!Model::Session::GetSessionIdByUser(*user, session_id))
-				{
-					Model::Session& session =
-						Model::Session::CreateSession(*user);
-					session_id = session.get_id();
-					user->set_session(session_id);
-				}
-			}
-		}
-	}
-
-	if (success_flag)
-	{
-		//将session写入response
-		response.set_session(session_id);
-
-		//写入职位类型映射消息
-		response.mutable_job_related_info()->CopyFrom(Model::Job::GetRelatedInfo());
-
-		//写入查询结果记录（只写入概要信息，不写入详细数据）
-		user->set_query_result_info_proto(response.mutable_job_query_result_info());
-
-		//TASK列表的HASH，可以通过HASH值是否改变来判断任务列表以及查询结果是否有变化
-		response.set_task_query_result_changed_time(user->get_task_query_result_changed_time());
-
-
-		response.set_error_code(TencentJobHunterMessage::ErrorCode::SUCCESS);
-	}
-	else
-	{
-		//失败返回1001（用户名密码错误）  
-		response.set_error_code(TencentJobHunterMessage::ErrorCode::LOGIN_INCORRECT_PASS);
-	}
-
-	_send_response(response, response_sender_ptr);
-
-}
-```
-
-
-
-可以看到，登录分为两种，一种是基于session的快速登录，一种是基于用户名密码的登录。
-
-在第一次登录时会使用用户名密码，一旦成功登录过，客户端下次会使用服务端返回的session来快速登录，直到session失效。
 

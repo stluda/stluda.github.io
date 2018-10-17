@@ -6,7 +6,26 @@
 2. 判断是否接收到过完全相同的数据，如果已经接收过且满足重发条件的话进行重发，否则回到第1步
 3. 如果是新数据，将数据派发给工作线程池，然后回到第1步继续接收来自客户端的请求
 
-![](/img/flow-receiver.png)
+
+
+```mermaid
+graph TD
+
+receive[接收数据]
+should_resend{满足重发条件?}
+worker(提交数据到<br>工作线程池)
+is_old{收到过同<br>样的数据?}
+resend(重发)
+
+
+should_resend --> |否|receive
+worker --> receive
+receive --> |从缓存中检索 |is_old
+is_old --> |否|worker
+is_old --> |是|should_resend
+should_resend --> |是|resend
+resend --> receive
+```
 
 
 

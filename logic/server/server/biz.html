@@ -1,0 +1,953 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>请求处理(节选) · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-luda-toggle-chapters/luda-toggle-chapters.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-luda-sticky-header/luda-sticky-header.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="../hunter.html" />
+    
+    
+    <link rel="prev" href="worker.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../../">
+            
+                <a href="../../../">
+            
+                    
+                    前言
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.1.1" data-path="../../../intro/why.html">
+            
+                <a href="../../../intro/why.html">
+            
+                    
+                    项目的由来
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.1.2" data-path="../../../intro/what.html">
+            
+                <a href="../../../intro/what.html">
+            
+                    
+                    项目介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" >
+            
+                <span>
+            
+                    
+                    使用说明
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="../../../manual/query.html">
+            
+                <a href="../../../manual/query.html">
+            
+                    
+                    查询
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1.1" data-path="../../../manual/query/exp.html">
+            
+                <a href="../../../manual/query/exp.html">
+            
+                    
+                    查询表达式
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="../../../manual/task.html">
+            
+                <a href="../../../manual/task.html">
+            
+                    
+                    任务
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="../../../manual/other.html">
+            
+                <a href="../../../manual/other.html">
+            
+                    
+                    其他
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../../../logic.html">
+            
+                <a href="../../../logic.html">
+            
+                    
+                    程序架构&核心代码
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="../../server.html">
+            
+                <a href="../../server.html">
+            
+                    
+                    服务端
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1.1" data-path="../clawer.html">
+            
+                <a href="../clawer.html">
+            
+                    
+                    信息抓取模块
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1.1.1" data-path="../clawer/clawer.md">
+            
+                <span>
+            
+                    
+                    页面抓取
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.1.2" data-path="../clawer/parser.md">
+            
+                <span>
+            
+                    
+                    数据解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.2" data-path="../server.html">
+            
+                <a href="../server.html">
+            
+                    
+                    请求处理模块
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1.2.1" data-path="receiver.html">
+            
+                <a href="receiver.html">
+            
+                    
+                    接收线程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.2.2" data-path="worker.html">
+            
+                <a href="worker.html">
+            
+                    
+                    工作线程池
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.3.1.2.3" data-path="biz.html">
+            
+                <a href="biz.html">
+            
+                    
+                    请求处理(节选)
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.3" data-path="../hunter.html">
+            
+                <a href="../hunter.html">
+            
+                    
+                    任务处理模块
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.4" data-path="../base.html">
+            
+                <a href="../base.html">
+            
+                    
+                    基本组件
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1.4.1" data-path="../base/jobquery.html">
+            
+                <a href="../base/jobquery.html">
+            
+                    
+                    职位查询器
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.4.2" data-path="../base/database.html">
+            
+                <a href="../base/database.html">
+            
+                    
+                    数据库管理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.4.3" data-path="../base/threadpool.html">
+            
+                <a href="../base/threadpool.html">
+            
+                    
+                    线程池
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="../../client.html">
+            
+                <a href="../../client.html">
+            
+                    
+                    客户端
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3" data-path="../../proto.html">
+            
+                <a href="../../proto.html">
+            
+                    
+                    通讯协议
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.3.1" data-path="../../proto/protobuf.html">
+            
+                <a href="../../proto/protobuf.html">
+            
+                    
+                    Protobuf
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" >
+            
+                <span>
+            
+                    
+                    附录
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" >
+            
+                <span>
+            
+                    
+                    代码
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1.1" >
+            
+                <span>
+            
+                    
+                    服务端(c++11)
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1.1.1" data-path="../../../code/server/udpserver.hpp.md">
+            
+                <span>
+            
+                    
+                    UdpServer.hpp
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../../.." >请求处理(节选)</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h2 id="&#x8BF7;&#x6C42;&#x5904;&#x7406;&#x8282;&#x9009;">&#x8BF7;&#x6C42;&#x5904;&#x7406;(&#x8282;&#x9009;)</h2>
+<p>&#x8BF7;&#x6C42;&#x5904;&#x7406;&#x7684;&#x5177;&#x4F53;&#x4E1A;&#x52A1;&#x903B;&#x8F91;&#x6211;&#x53EA;&#x6253;&#x7B97;&#x9009;&#x8BB2;&#xFF0C;&#x6BD5;&#x7ADF;&#x79CD;&#x7C7B;&#x592A;&#x591A;&#xFF08;&#x767B;&#x5F55;&#x3001;&#x6CE8;&#x518C;&#x3001;&#x67E5;&#x8BE2;&#x3001;&#x5220;&#x9664;&#x67E5;&#x8BE2;&#x8BB0;&#x5F55;&#x3001;&#x67E5;&#x770B;&#x804C;&#x4F4D;&#x8BE6;&#x60C5;&#x3001;&#x6DFB;&#x52A0;&#x4EFB;&#x52A1;&#x3001;&#x5220;&#x9664;&#x4EFB;&#x52A1;&#x7B49;&#x7B49;&#xFF09;&#x5168;&#x90E8;&#x5C55;&#x5F00;&#x6765;&#x5C31;&#x592A;&#x591A;&#x4E86;&#xFF0C;&#x800C;&#x4E14;&#x5185;&#x5BB9;&#x5927;&#x540C;&#x5C0F;&#x5F02;&#x6CA1;&#x5FC5;&#x8981;&#x5168;&#x90E8;&#x8BB2;&#x3002;</p>
+<p>&#x8FD9;&#x91CC;&#x53EA;&#x8BB2;&#x4E0B;&#x767B;&#x5F55;&#x548C;&#x67E5;&#x8BE2;</p>
+<h3 id="&#x767B;&#x5F55;">&#x767B;&#x5F55;</h3>
+<p>&#x5148;&#x4E0A;&#x6D41;&#x7A0B;&#x56FE;&#xFF1A;</p>
+<p>
+<!--mermaid-->
+<div>
+<svg id="mermaid-1539763344617" width="100%" xmlns="http://www.w3.org/2000/svg" style="max-width: 401.0531311035156px;" viewbox="0 0 401.0531311035156 954.8406372070312"><style>#mermaid-1539763344617 .label{font-family:trebuchet ms,verdana,arial;color:#333}#mermaid-1539763344617 .node circle,#mermaid-1539763344617 .node ellipse,#mermaid-1539763344617 .node polygon,#mermaid-1539763344617 .node rect{fill:#cde498;stroke:#13540c;stroke-width:1px}#mermaid-1539763344617 .node.clickable{cursor:pointer}#mermaid-1539763344617 .arrowheadPath{fill:green}#mermaid-1539763344617 .edgePath .path{stroke:green;stroke-width:1.5px}#mermaid-1539763344617 .edgeLabel{background-color:#e8e8e8}#mermaid-1539763344617 .cluster rect{fill:#cdffb2!important;stroke:#6eaa49!important;stroke-width:1px!important}#mermaid-1539763344617 .cluster text{fill:#333}#mermaid-1539763344617 div.mermaidTooltip{position:absolute;text-align:center;max-width:200px;padding:2px;font-family:trebuchet ms,verdana,arial;font-size:12px;background:#cdffb2;border:1px solid #6eaa49;border-radius:2px;pointer-events:none;z-index:100}#mermaid-1539763344617 .actor{stroke:#13540c;fill:#cde498}#mermaid-1539763344617 text.actor{fill:#000;stroke:none}#mermaid-1539763344617 .actor-line{stroke:grey}#mermaid-1539763344617 .messageLine0{marker-end:"url(#arrowhead)"}#mermaid-1539763344617 .messageLine0,#mermaid-1539763344617 .messageLine1{stroke-width:1.5;stroke-dasharray:"2 2";stroke:#333}#mermaid-1539763344617 #arrowhead{fill:#333}#mermaid-1539763344617 #crosshead path{fill:#333!important;stroke:#333!important}#mermaid-1539763344617 .messageText{fill:#333;stroke:none}#mermaid-1539763344617 .labelBox{stroke:#326932;fill:#cde498}#mermaid-1539763344617 .labelText,#mermaid-1539763344617 .loopText{fill:#000;stroke:none}#mermaid-1539763344617 .loopLine{stroke-width:2;stroke-dasharray:"2 2";marker-end:"url(#arrowhead)";stroke:#326932}#mermaid-1539763344617 .note{stroke:#6eaa49;fill:#fff5ad}#mermaid-1539763344617 .noteText{fill:#000;stroke:none;font-family:trebuchet ms,verdana,arial;font-size:14px}#mermaid-1539763344617 .section{stroke:none;opacity:.2}#mermaid-1539763344617 .section0,#mermaid-1539763344617 .section2{fill:#6eaa49}#mermaid-1539763344617 .section1,#mermaid-1539763344617 .section3{fill:#fff;opacity:.2}#mermaid-1539763344617 .sectionTitle0,#mermaid-1539763344617 .sectionTitle1,#mermaid-1539763344617 .sectionTitle2,#mermaid-1539763344617 .sectionTitle3{fill:#333}#mermaid-1539763344617 .sectionTitle{text-anchor:start;font-size:11px;text-height:14px}#mermaid-1539763344617 .grid .tick{stroke:#d3d3d3;opacity:.3;shape-rendering:crispEdges}#mermaid-1539763344617 .grid path{stroke-width:0}#mermaid-1539763344617 .today{fill:none;stroke:red;stroke-width:2px}#mermaid-1539763344617 .task{stroke-width:2}#mermaid-1539763344617 .taskText{text-anchor:middle;font-size:11px}#mermaid-1539763344617 .taskTextOutsideRight{fill:#000;text-anchor:start;font-size:11px}#mermaid-1539763344617 .taskTextOutsideLeft{fill:#000;text-anchor:end;font-size:11px}#mermaid-1539763344617 .taskText0,#mermaid-1539763344617 .taskText1,#mermaid-1539763344617 .taskText2,#mermaid-1539763344617 .taskText3{fill:#fff}#mermaid-1539763344617 .task0,#mermaid-1539763344617 .task1,#mermaid-1539763344617 .task2,#mermaid-1539763344617 .task3{fill:#487e3a;stroke:#13540c}#mermaid-1539763344617 .taskTextOutside0,#mermaid-1539763344617 .taskTextOutside1,#mermaid-1539763344617 .taskTextOutside2,#mermaid-1539763344617 .taskTextOutside3{fill:#000}#mermaid-1539763344617 .active0,#mermaid-1539763344617 .active1,#mermaid-1539763344617 .active2,#mermaid-1539763344617 .active3{fill:#cde498;stroke:#13540c}#mermaid-1539763344617 .activeText0,#mermaid-1539763344617 .activeText1,#mermaid-1539763344617 .activeText2,#mermaid-1539763344617 .activeText3{fill:#000!important}#mermaid-1539763344617 .done0,#mermaid-1539763344617 .done1,#mermaid-1539763344617 .done2,#mermaid-1539763344617 .done3{stroke:grey;fill:#d3d3d3;stroke-width:2}#mermaid-1539763344617 .doneText0,#mermaid-1539763344617 .doneText1,#mermaid-1539763344617 .doneText2,#mermaid-1539763344617 .doneText3{fill:#000!important}#mermaid-1539763344617 .crit0,#mermaid-1539763344617 .crit1,#mermaid-1539763344617 .crit2,#mermaid-1539763344617 .crit3{stroke:#f88;fill:red;stroke-width:2}#mermaid-1539763344617 .activeCrit0,#mermaid-1539763344617 .activeCrit1,#mermaid-1539763344617 .activeCrit2,#mermaid-1539763344617 .activeCrit3{stroke:#f88;fill:#cde498;stroke-width:2}#mermaid-1539763344617 .doneCrit0,#mermaid-1539763344617 .doneCrit1,#mermaid-1539763344617 .doneCrit2,#mermaid-1539763344617 .doneCrit3{stroke:#f88;fill:#d3d3d3;stroke-width:2;cursor:pointer;shape-rendering:crispEdges}#mermaid-1539763344617 .activeCritText0,#mermaid-1539763344617 .activeCritText1,#mermaid-1539763344617 .activeCritText2,#mermaid-1539763344617 .activeCritText3,#mermaid-1539763344617 .doneCritText0,#mermaid-1539763344617 .doneCritText1,#mermaid-1539763344617 .doneCritText2,#mermaid-1539763344617 .doneCritText3{fill:#000!important}#mermaid-1539763344617 .titleText{text-anchor:middle;font-size:18px;fill:#000}#mermaid-1539763344617 g.classGroup text{fill:#13540c;stroke:none;font-family:trebuchet ms,verdana,arial;font-size:10px}#mermaid-1539763344617 g.classGroup rect{fill:#cde498;stroke:#13540c}#mermaid-1539763344617 g.classGroup line{stroke:#13540c;stroke-width:1}#mermaid-1539763344617 .classLabel .box{stroke:none;stroke-width:0;fill:#cde498;opacity:.5}#mermaid-1539763344617 .classLabel .label{fill:#13540c;font-size:10px}#mermaid-1539763344617 .relation{stroke:#13540c;stroke-width:1;fill:none}#mermaid-1539763344617 #compositionEnd,#mermaid-1539763344617 #compositionStart{fill:#13540c;stroke:#13540c;stroke-width:1}#mermaid-1539763344617 #aggregationEnd,#mermaid-1539763344617 #aggregationStart{fill:#cde498;stroke:#13540c;stroke-width:1}#mermaid-1539763344617 #dependencyEnd,#mermaid-1539763344617 #dependencyStart,#mermaid-1539763344617 #extensionEnd,#mermaid-1539763344617 #extensionStart{fill:#13540c;stroke:#13540c;stroke-width:1}#mermaid-1539763344617 .branch-label,#mermaid-1539763344617 .commit-id,#mermaid-1539763344617 .commit-msg{fill:#d3d3d3;color:#d3d3d3}</style><style>#mermaid-1539763344617 {
+    color: rgb(0, 0, 0);
+    font: normal normal 400 normal 16px / normal "Times New Roman";
+  }</style><g transform="translate(-12, -12)"><g class="output"><g class="clusters"/><g class="edgePaths"><g class="edgePath" style="opacity: 1;"><path class="path" d="M237.31133270263672,59L237.31133270263672,84L237.81133270263675,109.50000305175782" marker-end="url(#arrowhead50)" style="fill:none"/><defs><marker id="arrowhead50" viewbox="0 0 10 10" refx="9" refy="5" markerunits="strokeWidth" markerwidth="8" markerheight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"/></marker></defs></g><g class="edgePath" style="opacity: 1;"><path class="path" d="M197.9295167711401,202.94474962026123L86.66328430175781,276.8265686035156L86.66328430175781,390.9203186035156L86.66328430175781,505.0140686035156L87.16328430175783,540.0140716552734" marker-end="url(#arrowhead51)" style="fill:none"/><defs><marker id="arrowhead51" viewbox="0 0 10 10" refx="9" refy="5" markerunits="strokeWidth" markerwidth="8" markerheight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"/></marker></defs></g><g class="edgePath" style="opacity: 1;"><path class="path" d="M79.05926101726597,665.2366108707816L72.66328430175781,707.3406372070312L72.66328430175781,761.3406372070312L72.66328430175781,805.8406372070312L194.11953735351562,836.7053851068756" marker-end="url(#arrowhead52)" style="fill:none"/><defs><marker id="arrowhead52" viewbox="0 0 10 10" refx="9" refy="5" markerunits="strokeWidth" markerwidth="8" markerheight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"/></marker></defs></g><g class="edgePath" style="opacity: 1;"><path class="path" d="M268.8514057943179,211.78648635656103L325.4593811035156,276.8265686035156L325.9593811035156,311.8265686035156" marker-end="url(#arrowhead53)" style="fill:none"/><defs><marker id="arrowhead53" viewbox="0 0 10 10" refx="9" refy="5" markerunits="strokeWidth" markerwidth="8" markerheight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"/></marker></defs></g><g class="edgePath" style="opacity: 1;"><path class="path" d="M115.09708477238682,645.4068275811289L159.62773895263672,707.3406372070312L215.94454765319824,741.8406372070312" marker-end="url(#arrowhead54)" style="fill:none"/><defs><marker id="arrowhead54" viewbox="0 0 10 10" refx="9" refy="5" markerunits="strokeWidth" markerwidth="8" markerheight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"/></marker></defs></g><g class="edgePath" style="opacity: 1;"><path class="path" d="M297.78958814651685,442.84427564651685L262.9593811035156,505.0140686035156L262.9593811035156,586.6773529052734" marker-end="url(#arrowhead55)" style="fill:none"/><defs><marker id="arrowhead55" viewbox="0 0 10 10" refx="9" refy="5" markerunits="strokeWidth" markerwidth="8" markerheight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"/></marker></defs></g><g class="edgePath" style="opacity: 1;"><path class="path" d="M262.9593811035156,625.6773529052734L262.9593811035156,707.3406372070312L253.25875176323785,741.8406372070312" marker-end="url(#arrowhead56)" style="fill:none"/><defs><marker id="arrowhead56" viewbox="0 0 10 10" refx="9" refy="5" markerunits="strokeWidth" markerwidth="8" markerheight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"/></marker></defs></g><g class="edgePath" style="opacity: 1;"><path class="path" d="M247.77578735351562,780.8406372070312L247.77578735351562,805.8406372070312L247.77578735351562,830.8406372070312" marker-end="url(#arrowhead57)" style="fill:none"/><defs><marker id="arrowhead57" viewbox="0 0 10 10" refx="9" refy="5" markerunits="strokeWidth" markerwidth="8" markerheight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"/></marker></defs></g><g class="edgePath" style="opacity: 1;"><path class="path" d="M247.77578735351562,869.8406372070312L247.77578735351562,894.8406372070312L247.77578735351562,919.8406372070312" marker-end="url(#arrowhead58)" style="fill:none"/><defs><marker id="arrowhead58" viewbox="0 0 10 10" refx="9" refy="5" markerunits="strokeWidth" markerwidth="8" markerheight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"/></marker></defs></g><g class="edgePath" style="opacity: 1;"><path class="path" d="M349.2918051433501,447.6816445636812L372.7757873535156,505.0140686035156L372.7757873535156,606.1773529052734L372.7757873535156,707.3406372070312L372.7757873535156,761.3406372070312L372.7757873535156,805.8406372070312L301.4320373535156,831.2390122070312" marker-end="url(#arrowhead59)" style="fill:none"/><defs><marker id="arrowhead59" viewbox="0 0 10 10" refx="9" refy="5" markerunits="strokeWidth" markerwidth="8" markerheight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"/></marker></defs></g></g><g class="edgeLabels"><g class="edgeLabel" transform="" style="opacity: 1;"><g transform="translate(0,0)" class="label"><foreignobject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="edgeLabel"/></div></foreignobject></g></g><g class="edgeLabel" transform="translate(86.66328430175781,390.9203186035156)" style="opacity: 1;"><g transform="translate(-8,-9.5)" class="label"><foreignobject width="16" height="19"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="edgeLabel">&#x662F;</span></div></foreignobject></g></g><g class="edgeLabel" transform="translate(72.66328430175781,761.3406372070312)" style="opacity: 1;"><g transform="translate(-8,-9.5)" class="label"><foreignobject width="16" height="19"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="edgeLabel">&#x5426;</span></div></foreignobject></g></g><g class="edgeLabel" transform="translate(325.4593811035156,276.8265686035156)" style="opacity: 1;"><g transform="translate(-8,-9.5)" class="label"><foreignobject width="16" height="19"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="edgeLabel">&#x5426;</span></div></foreignobject></g></g><g class="edgeLabel" transform="translate(159.62773895263672,707.3406372070312)" style="opacity: 1;"><g transform="translate(-8,-9.5)" class="label"><foreignobject width="16" height="19"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="edgeLabel">&#x662F;</span></div></foreignobject></g></g><g class="edgeLabel" transform="translate(262.9593811035156,505.0140686035156)" style="opacity: 1;"><g transform="translate(-8,-9.5)" class="label"><foreignobject width="16" height="19"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="edgeLabel">&#x662F;</span></div></foreignobject></g></g><g class="edgeLabel" transform="" style="opacity: 1;"><g transform="translate(0,0)" class="label"><foreignobject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="edgeLabel"/></div></foreignobject></g></g><g class="edgeLabel" transform="" style="opacity: 1;"><g transform="translate(0,0)" class="label"><foreignobject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="edgeLabel"/></div></foreignobject></g></g><g class="edgeLabel" transform="" style="opacity: 1;"><g transform="translate(0,0)" class="label"><foreignobject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="edgeLabel"/></div></foreignobject></g></g><g class="edgeLabel" transform="translate(372.7757873535156,707.3406372070312)" style="opacity: 1;"><g transform="translate(-8,-9.5)" class="label"><foreignobject width="16" height="19"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="edgeLabel">&#x5426;</span></div></foreignobject></g></g></g><g class="nodes"><g class="node" id="A" transform="translate(237.31133270263672,39.5)" style="opacity: 1;"><rect rx="0" ry="0" x="-50.328125" y="-19.5" width="100.65625" height="39"/><g class="label" transform="translate(0,0)"><g transform="translate(-40.328125,-9.5)"><foreignobject width="80.65625" height="19"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">type==&#x767B;&#x5F55;</div></foreignobject></g></g></g><g class="node" id="B1" transform="translate(237.31133270263672,175.6632843017578)" style="opacity: 1;"><polygon points="66.66328125,0 133.3265625,-66.66328125 66.66328125,-133.3265625 0,-66.66328125" rx="5" ry="5" transform="translate(-66.66328125,66.66328125)"/><g class="label" transform="translate(0,0)"><g transform="translate(-44.5703125,-9.5)"><foreignobject width="89.140625" height="19"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">Session&#x767B;&#x5F55;?</div></foreignobject></g></g></g><g class="node" id="B2" transform="translate(86.66328430175781,606.1773529052734)" style="opacity: 1;"><polygon points="66.66328125,0 133.3265625,-66.66328125 66.66328125,-133.3265625 0,-66.66328125" rx="5" ry="5" transform="translate(-66.66328125,66.66328125)"/><g class="label" transform="translate(0,0)"><g transform="translate(-44.5703125,-9.5)"><foreignobject width="89.140625" height="19"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">Session&#x6709;&#x6548;?</div></foreignobject></g></g></g><g class="node" id="Y" transform="translate(247.77578735351562,850.3406372070312)" style="opacity: 1;"><rect rx="5" ry="5" x="-53.65625" y="-19.5" width="107.3125" height="39"/><g class="label" transform="translate(0,0)"><g transform="translate(-43.65625,-9.5)"><foreignobject width="87.3125" height="19"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">&#x8BBE;&#x7F6E;errcode</div></foreignobject></g></g></g><g class="node" id="C" transform="translate(325.4593811035156,390.9203186035156)" style="opacity: 1;"><polygon points="79.59375,0 159.1875,-79.59375 79.59375,-159.1875 0,-79.59375" rx="5" ry="5" transform="translate(-79.59375,79.59375)"/><g class="label" transform="translate(0,0)"><g transform="translate(-58.9375,-9.5)"><foreignobject width="117.875" height="19"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">&#x7528;&#x6237;&#x540D;&#x5BC6;&#x7801;&#x6B63;&#x786E;?</div></foreignobject></g></g></g><g class="node" id="E" transform="translate(247.77578735351562,761.3406372070312)" style="opacity: 1;"><rect rx="5" ry="5" x="-90" y="-19.5" width="180" height="39"/><g class="label" transform="translate(0,0)"><g transform="translate(-80,-9.5)"><foreignobject width="160" height="19"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">&#x5199;&#x5165;&#x5FC5;&#x8981;&#x4FE1;&#x606F;&#x5230;&#x54CD;&#x5E94;&#x5305;</div></foreignobject></g></g></g><g class="node" id="D" transform="translate(262.9593811035156,606.1773529052734)" style="opacity: 1;"><rect rx="5" ry="5" x="-59.6328125" y="-19.5" width="119.265625" height="39"/><g class="label" transform="translate(0,0)"><g transform="translate(-49.6328125,-9.5)"><foreignobject width="99.265625" height="19"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">&#x521B;&#x5EFA;&#x65B0;Session</div></foreignobject></g></g></g><g class="node" id="Z" transform="translate(247.77578735351562,939.3406372070312)" style="opacity: 1;"><rect rx="0" ry="0" x="-90" y="-19.5" width="180" height="39"/><g class="label" transform="translate(0,0)"><g transform="translate(-80,-9.5)"><foreignobject width="160" height="19"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">&#x8FD4;&#x56DE;&#x54CD;&#x5E94;&#x6570;&#x636E;&#x7ED9;&#x5BA2;&#x6237;&#x7AEF;</div></foreignobject></g></g></g></g></g></g></svg>
+</div>
+<!--endmermaid-->
+
+</p>
+<p>&#x4EE3;&#x7801;&#xFF1A;</p>
+<pre><code class="lang-c++"><span class="hljs-keyword">void</span> TencentJobUserServer::_deal_with_login_request(<span class="hljs-keyword">const</span> TencentJobHunterMessage::Request&amp; request, Base::AsioServer::ResponseSender* response_sender_ptr)
+{
+    <span class="hljs-comment">//&#x79D8;&#x94A5;</span>
+    <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span>* key = Conf.AesKey.c_str();
+
+    <span class="hljs-comment">//&#x521B;&#x5EFA;&#x54CD;&#x5E94;&#x4FE1;&#x606F;</span>
+    TencentJobHunterMessage::Response response;
+    response.set_type(TencentJobHunterMessage::Type::LOGIN);
+    response.set_request_time(request.request_time());
+
+    <span class="hljs-comment">//&#x89E3;&#x6790;&#x5BA2;&#x6237;&#x7AEF;&#x8BF7;&#x6C42;</span>
+    <span class="hljs-keyword">bool</span> success_flag = <span class="hljs-literal">false</span>;
+    Model::User* user;
+    Model::Session* session;
+    <span class="hljs-built_in">std</span>::<span class="hljs-built_in">string</span> session_id = request.session();
+
+    <span class="hljs-keyword">if</span> (session_id != <span class="hljs-string">&quot;&quot;</span>)
+    {
+        <span class="hljs-keyword">if</span> ((session = Model::Session::GetSessionPointer(request.session())) != <span class="hljs-literal">nullptr</span>){
+            <span class="hljs-comment">//&#x57FA;&#x4E8E;session&#x7684;&#x5FEB;&#x901F;&#x767B;&#x5F55;</span>
+            user = &amp;session-&gt;get_user();
+            success_flag = <span class="hljs-literal">true</span>;
+        }
+        <span class="hljs-keyword">else</span>
+        {
+            _send_response(response, response_sender_ptr, TencentJobHunterMessage::ErrorCode::SESSION_INVALID_ID);
+            <span class="hljs-keyword">return</span>;
+        }
+    }
+    <span class="hljs-keyword">else</span>
+    {
+        <span class="hljs-built_in">std</span>::<span class="hljs-built_in">string</span> username = request.username();
+        <span class="hljs-built_in">std</span>::<span class="hljs-built_in">string</span> password = request.password();
+
+        user = Model::User::GetPointer(username);
+
+        <span class="hljs-keyword">if</span> (user != <span class="hljs-literal">nullptr</span>)
+        {
+            <span class="hljs-built_in">std</span>::<span class="hljs-built_in">string</span> salt = user-&gt;get_salt();
+            <span class="hljs-built_in">std</span>::<span class="hljs-built_in">string</span> m_pass_md5 = user-&gt;get_pass();
+            <span class="hljs-built_in">std</span>::<span class="hljs-built_in">string</span> pass_md5 = Common::CryptoHelper::MD5(password, salt);
+
+            <span class="hljs-comment">//&#x5BC6;&#x7801;&#x6BD4;&#x5BF9;&#x6B63;&#x786E;&#xFF0C;&#x767B;&#x5F55;&#x6210;&#x529F;</span>
+            <span class="hljs-keyword">if</span> (pass_md5 == m_pass_md5)
+            {
+                success_flag = <span class="hljs-literal">true</span>;
+
+                <span class="hljs-comment">//&#x521B;&#x5EFA;session&#x5E76;&#x4FDD;&#x5B58;</span>
+                <span class="hljs-comment">//&#x5982;&#x679C;&#x6CA1;&#x6709;session_id&#x5219;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x5168;&#x65B0;&#x7684;</span>
+                <span class="hljs-keyword">if</span> (!Model::Session::GetSessionIdByUser(*user, session_id))
+                {
+                    Model::Session&amp; session =
+                        Model::Session::CreateSession(*user);
+                    session_id = session.get_id();
+                    user-&gt;set_session(session_id);
+                }
+            }
+        }
+    }
+
+    <span class="hljs-keyword">if</span> (success_flag)
+    {
+        <span class="hljs-comment">//&#x5C06;session&#x5199;&#x5165;response</span>
+        response.set_session(session_id);
+
+        <span class="hljs-comment">//&#x5199;&#x5165;&#x804C;&#x4F4D;&#x7C7B;&#x578B;&#x6620;&#x5C04;&#x6D88;&#x606F;</span>
+        response.mutable_job_related_info()-&gt;CopyFrom(Model::Job::GetRelatedInfo());
+
+        <span class="hljs-comment">//&#x5199;&#x5165;&#x67E5;&#x8BE2;&#x7ED3;&#x679C;&#x8BB0;&#x5F55;&#xFF08;&#x53EA;&#x5199;&#x5165;&#x6982;&#x8981;&#x4FE1;&#x606F;&#xFF0C;&#x4E0D;&#x5199;&#x5165;&#x8BE6;&#x7EC6;&#x6570;&#x636E;&#xFF09;</span>
+        user-&gt;set_query_result_info_proto(response.mutable_job_query_result_info());
+
+        <span class="hljs-comment">//&#x4EFB;&#x52A1;&#x67E5;&#x8BE2;&#x7ED3;&#x679C;&#x7684;&#x6700;&#x540E;&#x66F4;&#x65B0;&#x65F6;&#x95F4;&#xFF0C;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x6BD4;&#x8F83;&#x66F4;&#x65B0;&#x65F6;&#x95F4;&#x6765;&#x5224;&#x65AD;&#x4EFB;&#x52A1;&#x5217;&#x8868;&#x4EE5;&#x53CA;&#x67E5;&#x8BE2;&#x7ED3;&#x679C;&#x662F;&#x5426;&#x6709;&#x53D8;&#x5316;</span>
+        response.set_task_query_result_changed_time(user-&gt;get_task_query_result_changed_time());
+
+
+        response.set_error_code(TencentJobHunterMessage::ErrorCode::SUCCESS);
+    }
+    <span class="hljs-keyword">else</span>
+    {
+        <span class="hljs-comment">//&#x5931;&#x8D25;&#x8FD4;&#x56DE;1001&#xFF08;&#x7528;&#x6237;&#x540D;&#x5BC6;&#x7801;&#x9519;&#x8BEF;&#xFF09;  </span>
+        response.set_error_code(TencentJobHunterMessage::ErrorCode::LOGIN_INCORRECT_PASS);
+    }
+
+    _send_response(response, response_sender_ptr);
+
+}
+</code></pre>
+<p>&#x53EF;&#x4EE5;&#x770B;&#x5230;&#xFF0C;&#x767B;&#x5F55;&#x5206;&#x4E3A;&#x4E24;&#x79CD;&#xFF0C;&#x4E00;&#x79CD;&#x662F;&#x57FA;&#x4E8E;session&#x7684;&#x5FEB;&#x901F;&#x767B;&#x5F55;&#xFF0C;&#x4E00;&#x79CD;&#x662F;&#x57FA;&#x4E8E;&#x7528;&#x6237;&#x540D;&#x5BC6;&#x7801;&#x7684;&#x767B;&#x5F55;&#x3002;</p>
+<p>&#x5728;&#x7B2C;&#x4E00;&#x6B21;&#x767B;&#x5F55;&#x65F6;&#x4F1A;&#x4F7F;&#x7528;&#x7528;&#x6237;&#x540D;&#x5BC6;&#x7801;&#xFF0C;&#x4E00;&#x65E6;&#x6210;&#x529F;&#x767B;&#x5F55;&#x8FC7;&#xFF0C;&#x5BA2;&#x6237;&#x7AEF;&#x4E0B;&#x6B21;&#x4F1A;&#x4F7F;&#x7528;&#x670D;&#x52A1;&#x7AEF;&#x8FD4;&#x56DE;&#x7684;session&#x6765;&#x5FEB;&#x901F;&#x767B;&#x5F55;&#xFF0C;&#x76F4;&#x5230;session&#x5931;&#x6548;&#x3002;</p>
+<p>&#x5982;&#x679C;&#x767B;&#x9646;&#x6210;&#x529F;&#xFF0C;&#x5219;&#x4F1A;&#x5199;&#x5165;&#x5BA2;&#x6237;&#x7AEF;&#x521D;&#x59CB;&#x5316;&#x9700;&#x8981;&#x7684;&#x4E00;&#x4E9B;&#x4FE1;&#x606F;&#xFF0C;&#x5305;&#x62EC;</p>
+<ul>
+<li>session</li>
+<li>&#x804C;&#x4F4D;&#x7C7B;&#x578B;&#x6620;&#x5C04;&#x4FE1;&#x606F;&#xFF08;&#x6280;&#x672F;&#x7C7B;=1&#xFF0C;&#x4EA7;&#x54C1;&#x9879;&#x76EE;&#x7C7B;=2&#xFF0C;&#x5E02;&#x573A;&#x7C7B;=3&#x7B49;&#x7B49;)</li>
+<li>&#x67E5;&#x8BE2;&#x7ED3;&#x679C;&#x6982;&#x8981;&#xFF08;&#x7528;&#x6237;&#x53D1;&#x8D77;&#x7684;&#x67E5;&#x8BE2;&#xFF0C;&#x7ED3;&#x679C;&#x4F1A;&#x4FDD;&#x5B58;&#x5728;&#x670D;&#x52A1;&#x5668;&#x3002;&#x9664;&#x975E;&#x6536;&#x5230;&#x5BA2;&#x6237;&#x7AEF;&#x7684;&#x5220;&#x9664;&#x6307;&#x4EE4;&#xFF09;</li>
+<li>&#x4EFB;&#x52A1;&#x67E5;&#x8BE2;&#x7ED3;&#x679C;&#x7684;&#x6700;&#x7EC8;&#x66F4;&#x65B0;&#x65F6;&#x95F4;&#xFF08;&#x7528;&#x8FD9;&#x4E2A;&#x65F6;&#x95F4;&#x8FDB;&#x884C;&#x6BD4;&#x8F83;&#xFF0C;&#x5982;&#x679C;&#x6BD4;&#x5BA2;&#x6237;&#x7AEF;&#x672C;&#x5730;&#x65F6;&#x95F4;&#x65B0;&#x7684;&#x8BDD;&#x4EE3;&#x8868;&#x4EFB;&#x52A1;&#x6709;&#x65B0;&#x7684;&#x67E5;&#x8BE2;&#x7ED3;&#x679C;&#xFF09;</li>
+</ul>
+<p>&#x7136;&#x540E;&#x65E0;&#x8BBA;&#x767B;&#x9646;&#x6210;&#x529F;&#x5931;&#x8D25;&#xFF0C;&#x90FD;&#x4F1A;&#x5199;&#x5165;error_code&#xFF0C;&#x6210;&#x529F;&#x7684;&#x8BDD;&#x8FD4;&#x56DE;0(SUCCESS)&#xFF0C;&#x5931;&#x8D25;&#x7684;&#x8BDD;&#x5219;&#x8FD4;&#x56DE;&#x54CD;&#x5E94;&#x7684;&#x5931;&#x8D25;&#x4EE3;&#x7801;&#x3002;</p>
+<p>&#x6700;&#x540E;&#x8C03;&#x7528;<code>_send_response</code>&#x5411;&#x5BA2;&#x6237;&#x7AEF;&#x505A;&#x51FA;&#x54CD;&#x5E94;&#x3002;</p>
+<pre><code class="lang-c++"><span class="hljs-keyword">void</span> TencentJobUserServer::_send_response(TencentJobHunterMessage::Response&amp; response, Base::AsioServer::ResponseSender* response_sender_ptr)
+{
+    <span class="hljs-comment">//&#x79D8;&#x94A5;</span>
+    <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span>* key = Conf.AesKey.c_str();
+
+    <span class="hljs-comment">//&#x5E8F;&#x5217;&#x5316;&#xFF0C;&#x8F93;&#x51FA;&#x6570;&#x636E;</span>
+    <span class="hljs-keyword">char</span> response_buff[<span class="hljs-number">65536</span>];
+    <span class="hljs-keyword">char</span> aes_buff[<span class="hljs-number">65536</span>];
+    <span class="hljs-keyword">int</span> size_before_encrypt = response.ByteSize();
+    response.SerializeToArray(response_buff, size_before_encrypt);
+
+
+    <span class="hljs-comment">//&#x5BF9;&#x6570;&#x636E;&#x52A0;&#x5BC6;</span>
+    <span class="hljs-keyword">int</span> size_after_encrypt = Common::CryptoHelper::AES_128_GCM_Encrypt(response_buff, size_before_encrypt, key, aes_buff);
+    response_sender_ptr-&gt;fillData(aes_buff, size_after_encrypt, response.request_time());
+
+    <span class="hljs-comment">//&#x7ED9;&#x5BA2;&#x6237;&#x7AEF;&#x53D1;&#x9001;&#x54CD;&#x5E94;&#x4FE1;&#x606F;</span>
+    <span class="hljs-built_in">log</span>.debug(fmt(<span class="hljs-string">&quot;&#x5411;&#x5BA2;&#x6237;&#x7AEF;[%1%]&#x53D1;&#x9001;&#x54CD;&#x5E94;...&quot;</span>) % response_sender_ptr-&gt;remote_address());
+    response_sender_ptr-&gt;async_send();
+}
+</code></pre>
+<p>protobuf&#x5BF9;&#x8C61;&#x5C06;&#x4F1A;&#x88AB;&#x5E8F;&#x5217;&#x5316;&#x2192;&#x7136;&#x540E;&#x52A0;&#x5BC6;&#x2192;&#x62C6;&#x5305;(&#x4E00;&#x4E2A;&#x5305;&#x6700;&#x5927;1024B)&#x2192;&#x6700;&#x540E;&#x53D1;&#x9001;</p>
+<h3 id="&#x67E5;&#x8BE2;">&#x67E5;&#x8BE2;</h3>
+<p>&#x6D41;&#x7A0B;&#x56FE;&#xFF1A;
+
+<!--mermaid-->
+<div>
+<svg id="mermaid-1539763348394" width="100%" xmlns="http://www.w3.org/2000/svg" style="max-width: 446.25px;" viewbox="0 0 446.25 1044.4046936035156"><style>#mermaid-1539763348394 .label{font-family:trebuchet ms,verdana,arial;color:#333}#mermaid-1539763348394 .node circle,#mermaid-1539763348394 .node ellipse,#mermaid-1539763348394 .node polygon,#mermaid-1539763348394 .node rect{fill:#cde498;stroke:#13540c;stroke-width:1px}#mermaid-1539763348394 .node.clickable{cursor:pointer}#mermaid-1539763348394 .arrowheadPath{fill:green}#mermaid-1539763348394 .edgePath .path{stroke:green;stroke-width:1.5px}#mermaid-1539763348394 .edgeLabel{background-color:#e8e8e8}#mermaid-1539763348394 .cluster rect{fill:#cdffb2!important;stroke:#6eaa49!important;stroke-width:1px!important}#mermaid-1539763348394 .cluster text{fill:#333}#mermaid-1539763348394 div.mermaidTooltip{position:absolute;text-align:center;max-width:200px;padding:2px;font-family:trebuchet ms,verdana,arial;font-size:12px;background:#cdffb2;border:1px solid #6eaa49;border-radius:2px;pointer-events:none;z-index:100}#mermaid-1539763348394 .actor{stroke:#13540c;fill:#cde498}#mermaid-1539763348394 text.actor{fill:#000;stroke:none}#mermaid-1539763348394 .actor-line{stroke:grey}#mermaid-1539763348394 .messageLine0{marker-end:"url(#arrowhead)"}#mermaid-1539763348394 .messageLine0,#mermaid-1539763348394 .messageLine1{stroke-width:1.5;stroke-dasharray:"2 2";stroke:#333}#mermaid-1539763348394 #arrowhead{fill:#333}#mermaid-1539763348394 #crosshead path{fill:#333!important;stroke:#333!important}#mermaid-1539763348394 .messageText{fill:#333;stroke:none}#mermaid-1539763348394 .labelBox{stroke:#326932;fill:#cde498}#mermaid-1539763348394 .labelText,#mermaid-1539763348394 .loopText{fill:#000;stroke:none}#mermaid-1539763348394 .loopLine{stroke-width:2;stroke-dasharray:"2 2";marker-end:"url(#arrowhead)";stroke:#326932}#mermaid-1539763348394 .note{stroke:#6eaa49;fill:#fff5ad}#mermaid-1539763348394 .noteText{fill:#000;stroke:none;font-family:trebuchet ms,verdana,arial;font-size:14px}#mermaid-1539763348394 .section{stroke:none;opacity:.2}#mermaid-1539763348394 .section0,#mermaid-1539763348394 .section2{fill:#6eaa49}#mermaid-1539763348394 .section1,#mermaid-1539763348394 .section3{fill:#fff;opacity:.2}#mermaid-1539763348394 .sectionTitle0,#mermaid-1539763348394 .sectionTitle1,#mermaid-1539763348394 .sectionTitle2,#mermaid-1539763348394 .sectionTitle3{fill:#333}#mermaid-1539763348394 .sectionTitle{text-anchor:start;font-size:11px;text-height:14px}#mermaid-1539763348394 .grid .tick{stroke:#d3d3d3;opacity:.3;shape-rendering:crispEdges}#mermaid-1539763348394 .grid path{stroke-width:0}#mermaid-1539763348394 .today{fill:none;stroke:red;stroke-width:2px}#mermaid-1539763348394 .task{stroke-width:2}#mermaid-1539763348394 .taskText{text-anchor:middle;font-size:11px}#mermaid-1539763348394 .taskTextOutsideRight{fill:#000;text-anchor:start;font-size:11px}#mermaid-1539763348394 .taskTextOutsideLeft{fill:#000;text-anchor:end;font-size:11px}#mermaid-1539763348394 .taskText0,#mermaid-1539763348394 .taskText1,#mermaid-1539763348394 .taskText2,#mermaid-1539763348394 .taskText3{fill:#fff}#mermaid-1539763348394 .task0,#mermaid-1539763348394 .task1,#mermaid-1539763348394 .task2,#mermaid-1539763348394 .task3{fill:#487e3a;stroke:#13540c}#mermaid-1539763348394 .taskTextOutside0,#mermaid-1539763348394 .taskTextOutside1,#mermaid-1539763348394 .taskTextOutside2,#mermaid-1539763348394 .taskTextOutside3{fill:#000}#mermaid-1539763348394 .active0,#mermaid-1539763348394 .active1,#mermaid-1539763348394 .active2,#mermaid-1539763348394 .active3{fill:#cde498;stroke:#13540c}#mermaid-1539763348394 .activeText0,#mermaid-1539763348394 .activeText1,#mermaid-1539763348394 .activeText2,#mermaid-1539763348394 .activeText3{fill:#000!important}#mermaid-1539763348394 .done0,#mermaid-1539763348394 .done1,#mermaid-1539763348394 .done2,#mermaid-1539763348394 .done3{stroke:grey;fill:#d3d3d3;stroke-width:2}#mermaid-1539763348394 .doneText0,#mermaid-1539763348394 .doneText1,#mermaid-1539763348394 .doneText2,#mermaid-1539763348394 .doneText3{fill:#000!important}#mermaid-1539763348394 .crit0,#mermaid-1539763348394 .crit1,#mermaid-1539763348394 .crit2,#mermaid-1539763348394 .crit3{stroke:#f88;fill:red;stroke-width:2}#mermaid-1539763348394 .activeCrit0,#mermaid-1539763348394 .activeCrit1,#mermaid-1539763348394 .activeCrit2,#mermaid-1539763348394 .activeCrit3{stroke:#f88;fill:#cde498;stroke-width:2}#mermaid-1539763348394 .doneCrit0,#mermaid-1539763348394 .doneCrit1,#mermaid-1539763348394 .doneCrit2,#mermaid-1539763348394 .doneCrit3{stroke:#f88;fill:#d3d3d3;stroke-width:2;cursor:pointer;shape-rendering:crispEdges}#mermaid-1539763348394 .activeCritText0,#mermaid-1539763348394 .activeCritText1,#mermaid-1539763348394 .activeCritText2,#mermaid-1539763348394 .activeCritText3,#mermaid-1539763348394 .doneCritText0,#mermaid-1539763348394 .doneCritText1,#mermaid-1539763348394 .doneCritText2,#mermaid-1539763348394 .doneCritText3{fill:#000!important}#mermaid-1539763348394 .titleText{text-anchor:middle;font-size:18px;fill:#000}#mermaid-1539763348394 g.classGroup text{fill:#13540c;stroke:none;font-family:trebuchet ms,verdana,arial;font-size:10px}#mermaid-1539763348394 g.classGroup rect{fill:#cde498;stroke:#13540c}#mermaid-1539763348394 g.classGroup line{stroke:#13540c;stroke-width:1}#mermaid-1539763348394 .classLabel .box{stroke:none;stroke-width:0;fill:#cde498;opacity:.5}#mermaid-1539763348394 .classLabel .label{fill:#13540c;font-size:10px}#mermaid-1539763348394 .relation{stroke:#13540c;stroke-width:1;fill:none}#mermaid-1539763348394 #compositionEnd,#mermaid-1539763348394 #compositionStart{fill:#13540c;stroke:#13540c;stroke-width:1}#mermaid-1539763348394 #aggregationEnd,#mermaid-1539763348394 #aggregationStart{fill:#cde498;stroke:#13540c;stroke-width:1}#mermaid-1539763348394 #dependencyEnd,#mermaid-1539763348394 #dependencyStart,#mermaid-1539763348394 #extensionEnd,#mermaid-1539763348394 #extensionStart{fill:#13540c;stroke:#13540c;stroke-width:1}#mermaid-1539763348394 .branch-label,#mermaid-1539763348394 .commit-id,#mermaid-1539763348394 .commit-msg{fill:#d3d3d3;color:#d3d3d3}</style><style>#mermaid-1539763348394 {
+    color: rgb(0, 0, 0);
+    font: normal normal 400 normal 16px / normal "Times New Roman";
+  }</style><g transform="translate(-12, -12)"><g class="output"><g class="clusters"/><g class="edgePaths"><g class="edgePath" style="opacity: 1;"><path class="path" d="M202.63671875,59L202.63671875,84L203.13671875,109.50000152587886" marker-end="url(#arrowhead59)" style="fill:none"/><defs><marker id="arrowhead59" viewbox="0 0 10 10" refx="9" refy="5" markerunits="strokeWidth" markerwidth="8" markerheight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"/></marker></defs></g><g class="edgePath" style="opacity: 1;"><path class="path" d="M162.16711796132557,200.76008823720454L38.703125,275.7296905517578L38.703125,368.2234420776367L38.703125,460.7171936035156L38.703125,514.7171936035156L38.703125,568.7171936035156L38.703125,682.8109436035156L38.703125,796.9046936035156L38.703125,850.9046936035156L38.703125,895.4046936035156L78.75754915730337,920.4046936035156" marker-end="url(#arrowhead60)" style="fill:none"/><defs><marker id="arrowhead60" viewbox="0 0 10 10" refx="9" refy="5" markerunits="strokeWidth" markerwidth="8" markerheight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"/></marker></defs></g><g class="edgePath" style="opacity: 1;"><path class="path" d="M227.12590559765124,217.74049912646984L259.93359375,275.7296905517578L260.43359375,310.7296920776368" marker-end="url(#arrowhead61)" style="fill:none"/><defs><marker id="arrowhead61" viewbox="0 0 10 10" refx="9" refy="5" markerunits="strokeWidth" markerwidth="8" markerheight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"/></marker></defs></g><g class="edgePath" style="opacity: 1;"><path class="path" d="M229.37725566452255,395.6608539921593L153.296875,460.7171936035156L153.296875,495.2171936035156" marker-end="url(#arrowhead62)" style="fill:none"/><defs><marker id="arrowhead62" viewbox="0 0 10 10" refx="9" refy="5" markerunits="strokeWidth" markerwidth="8" markerheight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"/></marker></defs></g><g class="edgePath" style="opacity: 1;"><path class="path" d="M291.48993020122504,395.6608525746538L366.5703125,460.7171936035156L366.5703125,514.7171936035156L366.5703125,568.7171936035156L366.5703125,653.8109436035156" marker-end="url(#arrowhead63)" style="fill:none"/><defs><marker id="arrowhead63" viewbox="0 0 10 10" refx="9" refy="5" markerunits="strokeWidth" markerwidth="8" markerheight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"/></marker></defs></g><g class="edgePath" style="opacity: 1;"><path class="path" d="M153.296875,534.2171936035156L153.296875,568.7171936035156L153.796875,603.7171936035156" marker-end="url(#arrowhead64)" style="fill:none"/><defs><marker id="arrowhead64" viewbox="0 0 10 10" refx="9" refy="5" markerunits="strokeWidth" markerwidth="8" markerheight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"/></marker></defs></g><g class="edgePath" style="opacity: 1;"><path class="path" d="M189.46314073040077,727.2384278731148L245.93359375,796.9046936035156L314.06260850694446,831.4046936035156" marker-end="url(#arrowhead65)" style="fill:none"/><defs><marker id="arrowhead65" viewbox="0 0 10 10" refx="9" refy="5" markerunits="strokeWidth" markerwidth="8" markerheight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"/></marker></defs></g><g class="edgePath" style="opacity: 1;"><path class="path" d="M131.90128468430458,741.0091032878202L110,796.9046936035156L110,850.9046936035156L110,895.4046936035156L110,920.4046936035156" marker-end="url(#arrowhead66)" style="fill:none"/><defs><marker id="arrowhead66" viewbox="0 0 10 10" refx="9" refy="5" markerunits="strokeWidth" markerwidth="8" markerheight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"/></marker></defs></g><g class="edgePath" style="opacity: 1;"><path class="path" d="M366.5703125,711.8109436035156L366.5703125,796.9046936035156L357.62586805555554,831.4046936035156" marker-end="url(#arrowhead67)" style="fill:none"/><defs><marker id="arrowhead67" viewbox="0 0 10 10" refx="9" refy="5" markerunits="strokeWidth" markerwidth="8" markerheight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"/></marker></defs></g><g class="edgePath" style="opacity: 1;"><path class="path" d="M352.5703125,870.4046936035156L352.5703125,895.4046936035156L163.65625,930.0613492123919" marker-end="url(#arrowhead68)" style="fill:none"/><defs><marker id="arrowhead68" viewbox="0 0 10 10" refx="9" refy="5" markerunits="strokeWidth" markerwidth="8" markerheight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"/></marker></defs></g><g class="edgePath" style="opacity: 1;"><path class="path" d="M110,959.4046936035156L110,984.4046936035156L110,1009.4046936035156" marker-end="url(#arrowhead69)" style="fill:none"/><defs><marker id="arrowhead69" viewbox="0 0 10 10" refx="9" refy="5" markerunits="strokeWidth" markerwidth="8" markerheight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"/></marker></defs></g></g><g class="edgeLabels"><g class="edgeLabel" transform="" style="opacity: 1;"><g transform="translate(0,0)" class="label"><foreignobject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="edgeLabel"/></div></foreignobject></g></g><g class="edgeLabel" transform="translate(38.703125,568.7171936035156)" style="opacity: 1;"><g transform="translate(-8,-9.5)" class="label"><foreignobject width="16" height="19"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="edgeLabel">&#x5426;</span></div></foreignobject></g></g><g class="edgeLabel" transform="translate(259.93359375,275.7296905517578)" style="opacity: 1;"><g transform="translate(-8,-9.5)" class="label"><foreignobject width="16" height="19"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="edgeLabel">&#x662F;</span></div></foreignobject></g></g><g class="edgeLabel" transform="translate(153.296875,460.7171936035156)" style="opacity: 1;"><g transform="translate(-8,-9.5)" class="label"><foreignobject width="16" height="19"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="edgeLabel">&#x662F;</span></div></foreignobject></g></g><g class="edgeLabel" transform="translate(366.5703125,514.7171936035156)" style="opacity: 1;"><g transform="translate(-8,-9.5)" class="label"><foreignobject width="16" height="19"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="edgeLabel">&#x5426;</span></div></foreignobject></g></g><g class="edgeLabel" transform="" style="opacity: 1;"><g transform="translate(0,0)" class="label"><foreignobject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="edgeLabel"/></div></foreignobject></g></g><g class="edgeLabel" transform="translate(245.93359375,796.9046936035156)" style="opacity: 1;"><g transform="translate(-8,-9.5)" class="label"><foreignobject width="16" height="19"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="edgeLabel">&#x662F;</span></div></foreignobject></g></g><g class="edgeLabel" transform="translate(110,850.9046936035156)" style="opacity: 1;"><g transform="translate(-8,-9.5)" class="label"><foreignobject width="16" height="19"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="edgeLabel">&#x5426;</span></div></foreignobject></g></g><g class="edgeLabel" transform="" style="opacity: 1;"><g transform="translate(0,0)" class="label"><foreignobject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="edgeLabel"/></div></foreignobject></g></g><g class="edgeLabel" transform="" style="opacity: 1;"><g transform="translate(0,0)" class="label"><foreignobject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="edgeLabel"/></div></foreignobject></g></g><g class="edgeLabel" transform="" style="opacity: 1;"><g transform="translate(0,0)" class="label"><foreignobject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="edgeLabel"/></div></foreignobject></g></g></g><g class="nodes"><g class="node" id="start" transform="translate(202.63671875,39.5)" style="opacity: 1;"><rect rx="0" ry="0" x="-50.328125" y="-19.5" width="100.65625" height="39"/><g class="label" transform="translate(0,0)"><g transform="translate(-40.328125,-9.5)"><foreignobject width="80.65625" height="19"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">type==&#x67E5;&#x8BE2;</div></foreignobject></g></g></g><g class="node" id="is_session_valid" transform="translate(202.63671875,175.1148452758789)" style="opacity: 1;"><polygon points="66.11484375,0 132.2296875,-66.11484375 66.11484375,-132.2296875 0,-66.11484375" rx="5" ry="5" transform="translate(-66.11484375,66.11484375)"/><g class="label" transform="translate(0,0)"><g transform="translate(-43.9609375,-9.5)"><foreignobject width="87.921875" height="19"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">session&#x6709;&#x6548;?</div></foreignobject></g></g></g><g class="node" id="is_new_query" transform="translate(259.93359375,368.2234420776367)" style="opacity: 1;"><polygon points="57.99375,0 115.9875,-57.99375 57.99375,-115.9875 0,-57.99375" rx="5" ry="5" transform="translate(-57.99375,57.99375)"/><g class="label" transform="translate(0,0)"><g transform="translate(-34.9375,-9.5)"><foreignobject width="69.875" height="19"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">&#x662F;&#x65B0;&#x67E5;&#x8BE2;?</div></foreignobject></g></g></g><g class="node" id="do_query" transform="translate(153.296875,514.7171936035156)" style="opacity: 1;"><rect rx="5" ry="5" x="-66" y="-19.5" width="132" height="39"/><g class="label" transform="translate(0,0)"><g transform="translate(-56,-9.5)"><foreignobject width="112" height="19"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">&#x5C1D;&#x8BD5;&#x521B;&#x5EFA;&#x65B0;&#x67E5;&#x8BE2;</div></foreignobject></g></g></g><g class="node" id="get_query" transform="translate(366.5703125,682.8109436035156)" style="opacity: 1;"><rect rx="5" ry="5" x="-83.6796875" y="-29" width="167.359375" height="58"/><g class="label" transform="translate(0,0)"><g transform="translate(-73.6796875,-19)"><foreignobject width="147.359375" height="38"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">&#x6839;&#x636E;&#x67E5;&#x8BE2;id,&#x8D77;&#x59CB;&#x7D22;&#x5F15;<br/>&#x53D6;&#x67E5;&#x8BE2;&#x7ED3;&#x679C;</div></foreignobject></g></g></g><g class="node" id="is_exp_valid" transform="translate(153.296875,682.8109436035156)" style="opacity: 1;"><polygon points="79.59375,0 159.1875,-79.59375 79.59375,-159.1875 0,-79.59375" rx="5" ry="5" transform="translate(-79.59375,79.59375)"/><g class="label" transform="translate(0,0)"><g transform="translate(-58.9375,-9.5)"><foreignobject width="117.875" height="19"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">&#x67E5;&#x8BE2;&#x8868;&#x8FBE;&#x5F0F;&#x5408;&#x6CD5;?</div></foreignobject></g></g></g><g class="node" id="write" transform="translate(352.5703125,850.9046936035156)" style="opacity: 1;"><rect rx="5" ry="5" x="-90" y="-19.5" width="180" height="39"/><g class="label" transform="translate(0,0)"><g transform="translate(-80,-9.5)"><foreignobject width="160" height="19"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">&#x5199;&#x5165;&#x5FC5;&#x8981;&#x4FE1;&#x606F;&#x5230;&#x54CD;&#x5E94;&#x5305;</div></foreignobject></g></g></g><g class="node" id="set_errcode" transform="translate(110,939.9046936035156)" style="opacity: 1;"><rect rx="5" ry="5" x="-53.65625" y="-19.5" width="107.3125" height="39"/><g class="label" transform="translate(0,0)"><g transform="translate(-43.65625,-9.5)"><foreignobject width="87.3125" height="19"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">&#x8BBE;&#x7F6E;errcode</div></foreignobject></g></g></g><g class="node" id="send" transform="translate(110,1028.9046936035156)" style="opacity: 1;"><rect rx="0" ry="0" x="-90" y="-19.5" width="180" height="39"/><g class="label" transform="translate(0,0)"><g transform="translate(-80,-9.5)"><foreignobject width="160" height="19"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">&#x8FD4;&#x56DE;&#x54CD;&#x5E94;&#x6570;&#x636E;&#x7ED9;&#x5BA2;&#x6237;&#x7AEF;</div></foreignobject></g></g></g></g></g></g></svg>
+</div>
+<!--endmermaid-->
+
+</p>
+<p>&#x7531;&#x4E8E;&#x67E5;&#x8BE2;&#x7ED3;&#x679C;&#x4E2A;&#x6570;&#x53EF;&#x80FD;&#x5F88;&#x591A;&#xFF0C;&#x5982;&#x679C;&#x7ED3;&#x679C;&#x4E2A;&#x6570;&#x592A;&#x591A;&#xFF0C;&#x4E00;&#x6B21;&#x6027;&#x5168;&#x90E8;&#x8FD4;&#x56DE;&#x7684;&#x8BDD;&#x6570;&#x636E;&#x91CF;&#x592A;&#x5927;&#x3002;</p>
+<p>&#x56E0;&#x6B64;&#x7A0B;&#x5E8F;&#x4F1A;&#x81EA;&#x52A8;&#x5BF9;&#x67E5;&#x8BE2;&#x7ED3;&#x679C;&#x8FDB;&#x884C;&#x5206;&#x9875;&#xFF0C;&#x6BCF;&#x9875;10&#x6761;&#x8BB0;&#x5F55;&#x3002;</p>
+<p>&#x56E0;&#x6B64;&#x67E5;&#x8BE2;&#x8BF7;&#x6C42;&#x5176;&#x5B9E;&#x5206;&#x4E3A;&#x4E24;&#x79CD;&#xFF0C;&#x4E00;&#x79CD;&#x662F;&#x5168;&#x65B0;&#x67E5;&#x8BE2;&#xFF0C;&#x8FD4;&#x56DE;&#x7B2C;&#x4E00;&#x9875;&#x7684;&#x67E5;&#x8BE2;&#x7ED3;&#x679C;&#xFF1B;&#x53E6;&#x4E00;&#x79CD;&#x5219;&#x662F;&#x83B7;&#x53D6;&#x5DF2;&#x6709;&#x67E5;&#x8BE2;&#x7ED3;&#x679C;&#xFF0C;&#x6839;&#x636E;&#x8D77;&#x59CB;&#x7D22;&#x5F15;&#x8FD4;&#x56DE;&#x4E00;&#x90E8;&#x5206;&#x67E5;&#x8BE2;&#x7ED3;&#x679C;&#x3002;</p>
+<p>&#x4EE5;&#x4E0B;&#x4E3A;&#x4EE3;&#x7801;&#xFF1A;</p>
+<pre><code class="lang-c++"><span class="hljs-keyword">void</span> TencentJobUserServer::_deal_with_new_job_query_request(<span class="hljs-keyword">const</span> TencentJobHunterMessage::Request&amp; request, Base::AsioServer::ResponseSender* response_sender_ptr)
+{
+    <span class="hljs-comment">//&#x79D8;&#x94A5;</span>
+    <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span>* key = Conf.AesKey.c_str();
+
+    <span class="hljs-comment">//&#x521B;&#x5EFA;&#x54CD;&#x5E94;&#x4FE1;&#x606F;</span>
+    TencentJobHunterMessage::Response response;
+    response.set_type(TencentJobHunterMessage::Type::ADD_JOB_QUERY);
+    response.set_request_time(request.request_time());
+
+
+    <span class="hljs-comment">//&#x89E3;&#x6790;&#x5BA2;&#x6237;&#x7AEF;&#x8BF7;&#x6C42;</span>
+    <span class="hljs-built_in">std</span>::<span class="hljs-built_in">string</span> session_id = request.session();
+
+    Model::Session* p_session = Model::Session::GetSessionPointer(session_id);
+    <span class="hljs-keyword">bool</span> success_flag = p_session != <span class="hljs-literal">nullptr</span>;
+
+    <span class="hljs-keyword">if</span> (success_flag)
+    {
+        response.set_session(session_id);
+        <span class="hljs-keyword">auto</span> query_option = request.job_query_option();
+        <span class="hljs-keyword">int</span> start_index = query_option.start_index();
+
+        <span class="hljs-built_in">std</span>::<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">const</span> Model::Job*&gt; job_list;                
+        <span class="hljs-keyword">int</span> query_no = query_option.query_no();
+        <span class="hljs-built_in">std</span>::<span class="hljs-built_in">string</span> query_id = query_option.query_id();
+        <span class="hljs-keyword">uint64_t</span> version;
+        <span class="hljs-keyword">bool</span> query_valid = <span class="hljs-literal">false</span>;
+
+        <span class="hljs-comment">//query_id&#x4E3A;&#x7A7A;&#xFF0C;&#x4EE3;&#x8868;&#x662F;&#x65B0;&#x67E5;&#x8BE2;&#xFF0C;&#x5426;&#x5219;&#x83B7;&#x53D6;&#x5DF2;&#x6709;&#x67E5;&#x8BE2;&#x7684;&#x67E5;&#x8BE2;&#x7ED3;&#x679C;</span>
+        <span class="hljs-keyword">if</span> (query_id != <span class="hljs-string">&quot;&quot;</span>)
+        {                    
+
+            query_valid = Model::JobQueryResult::Use(query_id, [&amp;version, &amp;job_list](Model::JobQueryResult* result){
+                result-&gt;get_datas(job_list);
+                version = result-&gt;get_version();
+            });
+        }
+        <span class="hljs-keyword">else</span>
+        {
+            <span class="hljs-comment">//&#x67E5;&#x8BE2;&#x8868;&#x8FBE;&#x5F0F;</span>
+            <span class="hljs-built_in">std</span>::<span class="hljs-built_in">string</span> query_expresion = query_option.query_expression();
+
+            <span class="hljs-keyword">try</span>
+            {
+                version = Model::Job::GetLatestVersion();
+                <span class="hljs-keyword">auto</span> <span class="hljs-built_in">exp</span> = Model::Job::Query(query_expresion, job_list);
+
+                Model::JobQueryResult&amp; query_result = Model::JobQueryResult::Add(p_session-&gt;get_user(), query_no, query_expresion, job_list, version);
+                query_id = query_result.get_id();
+                query_result.set_expression(<span class="hljs-built_in">exp</span>);
+                query_valid = <span class="hljs-literal">true</span>;
+            }
+            <span class="hljs-keyword">catch</span> (...)
+            {
+                <span class="hljs-comment">//&#x7531;&#x4E8E;&#x5BA2;&#x6237;&#x7AEF;&#x53D1;&#x9001;&#x524D;&#x5C31;&#x4F1A;&#x4E8B;&#x5148;&#x68C0;&#x67E5;&#x8868;&#x8FBE;&#x5F0F;&#x662F;&#x5426;&#x5408;&#x6CD5;</span>
+                <span class="hljs-comment">//&#x6240;&#x4EE5;&#x6309;&#x6B63;&#x5E38;&#x6D41;&#x7A0B;&#x8D70;&#x662F;&#x4E0D;&#x53EF;&#x80FD;&#x6536;&#x5230;&#x975E;&#x6CD5;&#x8868;&#x8FBE;&#x5F0F;&#x7684;</span>
+                <span class="hljs-comment">//&#x4F46;&#x5B89;&#x5168;&#x8D77;&#x89C1;&#x8FD9;&#x91CC;&#x8FD8;&#x662F;&#x8981;&#x505A;&#x4E2A;catch(&#x9632;&#x6B62;&#x6076;&#x610F;&#x653B;&#x51FB;)</span>
+                <span class="hljs-built_in">log</span>.error(<span class="hljs-string">&quot;&#x8868;&#x8FBE;&#x5F0F;&#x683C;&#x5F0F;&#x975E;&#x6CD5;&quot;</span>);
+            }
+
+        }
+
+        <span class="hljs-keyword">if</span> (query_valid)
+        {
+            <span class="hljs-comment">//&#x7531;&#x4E8E;&#x67E5;&#x8BE2;&#x7ED3;&#x679C;&#x53EF;&#x80FD;&#x5F88;&#x591A;&#xFF0C;&#x4E00;&#x6B21;&#x6027;&#x53D1;&#x9001;&#x6570;&#x636E;&#x91CF;&#x592A;&#x5927;</span>
+            <span class="hljs-comment">//&#x6240;&#x4EE5;&#x67E5;&#x8BE2;&#x7ED3;&#x679C;&#x4F1A;&#x81EA;&#x52A8;&#x5206;&#x9875;</span>
+            <span class="hljs-comment">//&#x4E00;&#x6B21;&#x53EA;&#x8FD4;&#x56DE;10&#x6761;&#x67E5;&#x8BE2;&#x7ED3;&#x679C;&#xFF0C;&#x9700;&#x8981;&#x66F4;&#x591A;&#x67E5;&#x8BE2;&#x7ED3;&#x679C;&#x53EA;&#x8981;&#x5728;&#x8BF7;&#x6C42;&#x4E2D;&#x4FEE;&#x6539;start_index&#x5373;&#x53EF;</span>
+            <span class="hljs-keyword">int</span> max_length = job_list.size();
+            <span class="hljs-keyword">int</span> page_length = max_length - start_index &lt; <span class="hljs-number">10</span> ? max_length - start_index : <span class="hljs-number">10</span>;
+
+            TencentJobHunterMessage::JobQueryResult&amp; result = *response.mutable_job_query_result();
+            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = start_index; i &lt; start_index + page_length; i++)
+            {
+                TencentJobHunterMessage::Job* p_m_job = result.add_list();
+                <span class="hljs-keyword">const</span> Model::Job* p_job = job_list[i];
+
+                <span class="hljs-comment">//&#x5199;&#x5165;&#x804C;&#x4F4D;ID&#xFF0C;&#x6807;&#x9898;&#xFF0C;&#x7C7B;&#x578B;&#xFF0C;&#x5730;&#x70B9;&#xFF0C;&#x62DB;&#x8058;&#x4EBA;&#x6570;&#xFF0C;&#x65E5;&#x671F;</span>
+                p_m_job-&gt;set_id(p_job-&gt;get_id());
+                p_m_job-&gt;set_title(p_job-&gt;get_title());
+                p_m_job-&gt;set_type(p_job-&gt;get_type());
+                p_m_job-&gt;set_location(p_job-&gt;get_location());
+                p_m_job-&gt;set_hiring_number(p_job-&gt;get_hiring_number());
+                p_m_job-&gt;set_date(Common::DateHelper::ToString(p_job-&gt;get_date()));
+            }
+
+            <span class="hljs-comment">//&#x5199;&#x5165;&#x67E5;&#x8BE2;id&#xFF0C;&#x67E5;&#x8BE2;no&#xFF0C;&#x603B;&#x7ED3;&#x679C;&#x4E2A;&#x6570;&#xFF0C;&#x8D77;&#x59CB;index</span>
+            result.set_query_id(query_id);
+            result.set_query_no(query_no);
+            result.set_max_length(max_length);
+            result.set_start_index(start_index);
+            result.set_version(version);
+
+            response.set_error_code(TencentJobHunterMessage::ErrorCode::SUCCESS);
+        }
+        <span class="hljs-keyword">else</span>
+        {
+            <span class="hljs-comment">//&#x975E;&#x6CD5;&#x8868;&#x8FBE;&#x5F0F;</span>
+            response.set_error_code(TencentJobHunterMessage::ErrorCode::QUERY_INVALID_EXPRESSION);
+        }
+
+
+    }
+    <span class="hljs-keyword">else</span>
+    {
+        <span class="hljs-comment">//&#x975E;&#x6CD5;session</span>
+        response.set_error_code(TencentJobHunterMessage::ErrorCode::SESSION_INVALID_ID);
+    }
+
+
+    _send_response(response, response_sender_ptr);
+}
+</code></pre>
+<p>&#x5173;&#x4E8E;&#x67E5;&#x8BE2;&#x8868;&#x8FBE;&#x5F0F;&#x89E3;&#x91CA;&#x5668;&#x7684;&#x5B9E;&#x73B0;&#x5C06;&#x4F1A;&#x5728;&#x516C;&#x5171;&#x7EC4;&#x4EF6;&#x90E8;&#x5206;&#x8BB2;&#x89E3;&#xFF0C;&#x8FD9;&#x91CC;&#x6682;&#x4E14;&#x8DF3;&#x8FC7;&#x3002;</p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="worker.html" class="navigation navigation-prev " aria-label="Previous page: 工作线程池">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="../hunter.html" class="navigation navigation-next " aria-label="Next page: 任务处理模块">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"请求处理(节选)","level":"1.3.1.2.3","depth":4,"next":{"title":"任务处理模块","level":"1.3.1.3","depth":3,"path":"logic/server/hunter.md","ref":"logic/server/hunter.md","articles":[]},"previous":{"title":"工作线程池","level":"1.3.1.2.2","depth":4,"path":"logic/server/server/worker.md","ref":"logic/server/server/worker.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["luda-toggle-chapters","luda-sticky-header","mermaid-flow","livereload"],"pluginsConfig":{"livereload":{},"search":{},"luda-sticky-header":{"myConfigKey":"it's the default value"},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"mermaid-flow":{},"highlight":{},"luda-toggle-chapters":{"myConfigKey":"it's the default value"},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"logic/server/server/biz.md","mtime":"2018-10-17T07:57:40.229Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-10-17T08:01:49.490Z"},"basePath":"../../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../../../gitbook/gitbook.js"></script>
+    <script src="../../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-luda-toggle-chapters/luda-toggle-chapters.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-luda-sticky-header/luda-sticky-header.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-livereload/plugin.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

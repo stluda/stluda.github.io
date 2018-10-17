@@ -65,7 +65,7 @@
     <link rel="shortcut icon" href="../../../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="../hunter.html" />
+    <link rel="next" href="biz.html" />
     
     
     <link rel="prev" href="receiver.html" />
@@ -97,23 +97,23 @@
         
         
     
-        <li class="chapter " data-level="1.1" >
+        <li class="chapter " data-level="1.1" data-path="../../../">
             
-                <span>
+                <a href="../../../">
             
                     
                     前言
             
-                </span>
+                </a>
             
 
             
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.1.1" data-path="../../../">
+        <li class="chapter " data-level="1.1.1" data-path="../../../intro/why.html">
             
-                <a href="../../../">
+                <a href="../../../intro/why.html">
             
                     
                     项目的由来
@@ -219,14 +219,14 @@
             
         </li>
     
-        <li class="chapter " data-level="1.3" >
+        <li class="chapter " data-level="1.3" data-path="../../../logic.html">
             
-                <span>
+                <a href="../../../logic.html">
             
                     
                     程序架构&核心代码
             
-                </span>
+                </a>
             
 
             
@@ -325,6 +325,19 @@
             
                     
                     工作线程池
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.2.3" data-path="biz.html">
+            
+                <a href="biz.html">
+            
+                    
+                    请求处理(节选)
             
                 </a>
             
@@ -579,6 +592,18 @@
                                 <section class="normal markdown-section">
                                 
                                 <h2 id="&#x5DE5;&#x4F5C;&#x7EBF;&#x7A0B;&#x6C60;">&#x5DE5;&#x4F5C;&#x7EBF;&#x7A0B;&#x6C60;</h2>
+<p>&#x6574;&#x4F53;&#x6D41;&#x7A0B;&#x56FE;&#x5982;&#x4E0B;&#xFF1A;
+
+<!--mermaid-->
+<div>
+<svg id="mermaid-1539763339979" width="100%" xmlns="http://www.w3.org/2000/svg" style="max-width: 446.5562515258789px;" viewbox="0 0 446.5562515258789 684.2000122070312"><style>#mermaid-1539763339979 .label{font-family:trebuchet ms,verdana,arial;color:#333}#mermaid-1539763339979 .node circle,#mermaid-1539763339979 .node ellipse,#mermaid-1539763339979 .node polygon,#mermaid-1539763339979 .node rect{fill:#cde498;stroke:#13540c;stroke-width:1px}#mermaid-1539763339979 .node.clickable{cursor:pointer}#mermaid-1539763339979 .arrowheadPath{fill:green}#mermaid-1539763339979 .edgePath .path{stroke:green;stroke-width:1.5px}#mermaid-1539763339979 .edgeLabel{background-color:#e8e8e8}#mermaid-1539763339979 .cluster rect{fill:#cdffb2!important;stroke:#6eaa49!important;stroke-width:1px!important}#mermaid-1539763339979 .cluster text{fill:#333}#mermaid-1539763339979 div.mermaidTooltip{position:absolute;text-align:center;max-width:200px;padding:2px;font-family:trebuchet ms,verdana,arial;font-size:12px;background:#cdffb2;border:1px solid #6eaa49;border-radius:2px;pointer-events:none;z-index:100}#mermaid-1539763339979 .actor{stroke:#13540c;fill:#cde498}#mermaid-1539763339979 text.actor{fill:#000;stroke:none}#mermaid-1539763339979 .actor-line{stroke:grey}#mermaid-1539763339979 .messageLine0{marker-end:"url(#arrowhead)"}#mermaid-1539763339979 .messageLine0,#mermaid-1539763339979 .messageLine1{stroke-width:1.5;stroke-dasharray:"2 2";stroke:#333}#mermaid-1539763339979 #arrowhead{fill:#333}#mermaid-1539763339979 #crosshead path{fill:#333!important;stroke:#333!important}#mermaid-1539763339979 .messageText{fill:#333;stroke:none}#mermaid-1539763339979 .labelBox{stroke:#326932;fill:#cde498}#mermaid-1539763339979 .labelText,#mermaid-1539763339979 .loopText{fill:#000;stroke:none}#mermaid-1539763339979 .loopLine{stroke-width:2;stroke-dasharray:"2 2";marker-end:"url(#arrowhead)";stroke:#326932}#mermaid-1539763339979 .note{stroke:#6eaa49;fill:#fff5ad}#mermaid-1539763339979 .noteText{fill:#000;stroke:none;font-family:trebuchet ms,verdana,arial;font-size:14px}#mermaid-1539763339979 .section{stroke:none;opacity:.2}#mermaid-1539763339979 .section0,#mermaid-1539763339979 .section2{fill:#6eaa49}#mermaid-1539763339979 .section1,#mermaid-1539763339979 .section3{fill:#fff;opacity:.2}#mermaid-1539763339979 .sectionTitle0,#mermaid-1539763339979 .sectionTitle1,#mermaid-1539763339979 .sectionTitle2,#mermaid-1539763339979 .sectionTitle3{fill:#333}#mermaid-1539763339979 .sectionTitle{text-anchor:start;font-size:11px;text-height:14px}#mermaid-1539763339979 .grid .tick{stroke:#d3d3d3;opacity:.3;shape-rendering:crispEdges}#mermaid-1539763339979 .grid path{stroke-width:0}#mermaid-1539763339979 .today{fill:none;stroke:red;stroke-width:2px}#mermaid-1539763339979 .task{stroke-width:2}#mermaid-1539763339979 .taskText{text-anchor:middle;font-size:11px}#mermaid-1539763339979 .taskTextOutsideRight{fill:#000;text-anchor:start;font-size:11px}#mermaid-1539763339979 .taskTextOutsideLeft{fill:#000;text-anchor:end;font-size:11px}#mermaid-1539763339979 .taskText0,#mermaid-1539763339979 .taskText1,#mermaid-1539763339979 .taskText2,#mermaid-1539763339979 .taskText3{fill:#fff}#mermaid-1539763339979 .task0,#mermaid-1539763339979 .task1,#mermaid-1539763339979 .task2,#mermaid-1539763339979 .task3{fill:#487e3a;stroke:#13540c}#mermaid-1539763339979 .taskTextOutside0,#mermaid-1539763339979 .taskTextOutside1,#mermaid-1539763339979 .taskTextOutside2,#mermaid-1539763339979 .taskTextOutside3{fill:#000}#mermaid-1539763339979 .active0,#mermaid-1539763339979 .active1,#mermaid-1539763339979 .active2,#mermaid-1539763339979 .active3{fill:#cde498;stroke:#13540c}#mermaid-1539763339979 .activeText0,#mermaid-1539763339979 .activeText1,#mermaid-1539763339979 .activeText2,#mermaid-1539763339979 .activeText3{fill:#000!important}#mermaid-1539763339979 .done0,#mermaid-1539763339979 .done1,#mermaid-1539763339979 .done2,#mermaid-1539763339979 .done3{stroke:grey;fill:#d3d3d3;stroke-width:2}#mermaid-1539763339979 .doneText0,#mermaid-1539763339979 .doneText1,#mermaid-1539763339979 .doneText2,#mermaid-1539763339979 .doneText3{fill:#000!important}#mermaid-1539763339979 .crit0,#mermaid-1539763339979 .crit1,#mermaid-1539763339979 .crit2,#mermaid-1539763339979 .crit3{stroke:#f88;fill:red;stroke-width:2}#mermaid-1539763339979 .activeCrit0,#mermaid-1539763339979 .activeCrit1,#mermaid-1539763339979 .activeCrit2,#mermaid-1539763339979 .activeCrit3{stroke:#f88;fill:#cde498;stroke-width:2}#mermaid-1539763339979 .doneCrit0,#mermaid-1539763339979 .doneCrit1,#mermaid-1539763339979 .doneCrit2,#mermaid-1539763339979 .doneCrit3{stroke:#f88;fill:#d3d3d3;stroke-width:2;cursor:pointer;shape-rendering:crispEdges}#mermaid-1539763339979 .activeCritText0,#mermaid-1539763339979 .activeCritText1,#mermaid-1539763339979 .activeCritText2,#mermaid-1539763339979 .activeCritText3,#mermaid-1539763339979 .doneCritText0,#mermaid-1539763339979 .doneCritText1,#mermaid-1539763339979 .doneCritText2,#mermaid-1539763339979 .doneCritText3{fill:#000!important}#mermaid-1539763339979 .titleText{text-anchor:middle;font-size:18px;fill:#000}#mermaid-1539763339979 g.classGroup text{fill:#13540c;stroke:none;font-family:trebuchet ms,verdana,arial;font-size:10px}#mermaid-1539763339979 g.classGroup rect{fill:#cde498;stroke:#13540c}#mermaid-1539763339979 g.classGroup line{stroke:#13540c;stroke-width:1}#mermaid-1539763339979 .classLabel .box{stroke:none;stroke-width:0;fill:#cde498;opacity:.5}#mermaid-1539763339979 .classLabel .label{fill:#13540c;font-size:10px}#mermaid-1539763339979 .relation{stroke:#13540c;stroke-width:1;fill:none}#mermaid-1539763339979 #compositionEnd,#mermaid-1539763339979 #compositionStart{fill:#13540c;stroke:#13540c;stroke-width:1}#mermaid-1539763339979 #aggregationEnd,#mermaid-1539763339979 #aggregationStart{fill:#cde498;stroke:#13540c;stroke-width:1}#mermaid-1539763339979 #dependencyEnd,#mermaid-1539763339979 #dependencyStart,#mermaid-1539763339979 #extensionEnd,#mermaid-1539763339979 #extensionStart{fill:#13540c;stroke:#13540c;stroke-width:1}#mermaid-1539763339979 .branch-label,#mermaid-1539763339979 .commit-id,#mermaid-1539763339979 .commit-msg{fill:#d3d3d3;color:#d3d3d3}</style><style>#mermaid-1539763339979 {
+    color: rgb(0, 0, 0);
+    font: normal normal 400 normal 16px / normal "Times New Roman";
+  }</style><g transform="translate(-12, -12)"><g class="output"><g class="clusters"/><g class="edgePaths"><g class="edgePath" style="opacity: 1;"><path class="path" d="M305.1500015258789,59L305.1500015258789,84L305.65000152587896,109.50000305175782" marker-end="url(#arrowhead32)" style="fill:none"/><defs><marker id="arrowhead32" viewbox="0 0 10 10" refx="9" refy="5" markerunits="strokeWidth" markerwidth="8" markerheight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"/></marker></defs></g><g class="edgePath" style="opacity: 1;"><path class="path" d="M259.3864189035593,219.83642042943816L142.2562484741211,300.1000061035156L142.7562484741211,335.1000091552733" marker-end="url(#arrowhead33)" style="fill:none"/><defs><marker id="arrowhead33" viewbox="0 0 10 10" refx="9" refy="5" markerunits="strokeWidth" markerwidth="8" markerheight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"/></marker></defs></g><g class="edgePath" style="opacity: 1;"><path class="path" d="M110.20581715757129,459.14957783872364L62,525.7000122070312L62,560.2000122070312" marker-end="url(#arrowhead34)" style="fill:none"/><defs><marker id="arrowhead34" viewbox="0 0 10 10" refx="9" refy="5" markerunits="strokeWidth" markerwidth="8" markerheight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"/></marker></defs></g><g class="edgePath" style="opacity: 1;"><path class="path" d="M168.023695020661,466.432556505218L196,525.7000122070312L196,560.2000122070312" marker-end="url(#arrowhead35)" style="fill:none"/><defs><marker id="arrowhead35" viewbox="0 0 10 10" refx="9" refy="5" markerunits="strokeWidth" markerwidth="8" markerheight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"/></marker></defs></g><g class="edgePath" style="opacity: 1;"><path class="path" d="M189.21185665835262,445.2443948675264L306.8125,525.7000122070312L306.8125,560.2000122070312" marker-end="url(#arrowhead36)" style="fill:none"/><defs><marker id="arrowhead36" viewbox="0 0 10 10" refx="9" refy="5" markerunits="strokeWidth" markerwidth="8" markerheight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"/></marker></defs></g><g class="edgePath" style="opacity: 1;"><path class="path" d="M331.4416053344018,240.3083931397193L360.5562515258789,300.1000061035156L360.5562515258789,393.40000915527344" marker-end="url(#arrowhead37)" style="fill:none"/><defs><marker id="arrowhead37" viewbox="0 0 10 10" refx="9" refy="5" markerunits="strokeWidth" markerwidth="8" markerheight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"/></marker></defs></g><g class="edgePath" style="opacity: 1;"><path class="path" d="M62,599.2000122070312L62,624.2000122070312L129.8335682729657,649.2000122070312" marker-end="url(#arrowhead38)" style="fill:none"/><defs><marker id="arrowhead38" viewbox="0 0 10 10" refx="9" refy="5" markerunits="strokeWidth" markerwidth="8" markerheight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"/></marker></defs></g><g class="edgePath" style="opacity: 1;"><path class="path" d="M196,599.2000122070312L196,624.2000122070312L188.55266939656119,649.2000122070312" marker-end="url(#arrowhead39)" style="fill:none"/><defs><marker id="arrowhead39" viewbox="0 0 10 10" refx="9" refy="5" markerunits="strokeWidth" markerwidth="8" markerheight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"/></marker></defs></g><g class="edgePath" style="opacity: 1;"><path class="path" d="M306.8125,599.2000122070312L306.8125,624.2000122070312L237.11095591341513,649.2000122070312" marker-end="url(#arrowhead40)" style="fill:none"/><defs><marker id="arrowhead40" viewbox="0 0 10 10" refx="9" refy="5" markerunits="strokeWidth" markerwidth="8" markerheight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"/></marker></defs></g></g><g class="edgeLabels"><g class="edgeLabel" transform="" style="opacity: 1;"><g transform="translate(0,0)" class="label"><foreignobject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="edgeLabel"/></div></foreignobject></g></g><g class="edgeLabel" transform="translate(142.2562484741211,300.1000061035156)" style="opacity: 1;"><g transform="translate(-16,-9.5)" class="label"><foreignobject width="32" height="19"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="edgeLabel">&#x6210;&#x529F;</span></div></foreignobject></g></g><g class="edgeLabel" transform="translate(62,525.7000122070312)" style="opacity: 1;"><g transform="translate(-16,-9.5)" class="label"><foreignobject width="32" height="19"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="edgeLabel">&#x767B;&#x5F55;</span></div></foreignobject></g></g><g class="edgeLabel" transform="translate(196,525.7000122070312)" style="opacity: 1;"><g transform="translate(-16,-9.5)" class="label"><foreignobject width="32" height="19"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="edgeLabel">&#x67E5;&#x8BE2;</span></div></foreignobject></g></g><g class="edgeLabel" transform="translate(306.8125,525.7000122070312)" style="opacity: 1;"><g transform="translate(-6,-9)" class="label"><foreignobject width="12" height="18"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="edgeLabel">...</span></div></foreignobject></g></g><g class="edgeLabel" transform="translate(360.5562515258789,300.1000061035156)" style="opacity: 1;"><g transform="translate(-16,-9.5)" class="label"><foreignobject width="32" height="19"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="edgeLabel">&#x5931;&#x8D25;</span></div></foreignobject></g></g><g class="edgeLabel" transform="" style="opacity: 1;"><g transform="translate(0,0)" class="label"><foreignobject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="edgeLabel"/></div></foreignobject></g></g><g class="edgeLabel" transform="" style="opacity: 1;"><g transform="translate(0,0)" class="label"><foreignobject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="edgeLabel"/></div></foreignobject></g></g><g class="edgeLabel" transform="" style="opacity: 1;"><g transform="translate(0,0)" class="label"><foreignobject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="edgeLabel"/></div></foreignobject></g></g></g><g class="nodes"><g class="node" id="A" transform="translate(305.1500015258789,39.5)" style="opacity: 1;"><rect rx="0" ry="0" x="-66" y="-19.5" width="132" height="39"/><g class="label" transform="translate(0,0)"><g transform="translate(-56,-9.5)"><foreignobject width="112" height="19"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">&#x4ECE;&#x961F;&#x5217;&#x53D6;&#x51FA;&#x6570;&#x636E;</div></foreignobject></g></g></g><g class="node" id="B" transform="translate(305.1500015258789,187.3000030517578)" style="opacity: 1;"><polygon points="78.3,0 156.6,-78.3 78.3,-156.6 0,-78.3" rx="5" ry="5" transform="translate(-78.3,78.3)"/><g class="label" transform="translate(0,0)"><g transform="translate(-48,-19)"><foreignobject width="96" height="38"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">&#x89E3;&#x5BC6;&#x5E76;&#x8FD8;&#x539F;&#x6210;<br/>protobuf&#x5BF9;&#x8C61;</div></foreignobject></g></g></g><g class="node" id="D" transform="translate(142.2562484741211,412.90000915527344)" style="opacity: 1;"><polygon points="78.3,0 156.6,-78.3 78.3,-156.6 0,-78.3" rx="5" ry="5" transform="translate(-78.3,78.3)"/><g class="label" transform="translate(0,0)"><g transform="translate(-48,-19)"><foreignobject width="96" height="38"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">&#x5224;&#x65AD;&#x7C7B;&#x578B;&#x6267;&#x884C;<br/>&#x76F8;&#x5E94;&#x4E1A;&#x52A1;&#x903B;&#x8F91;</div></foreignobject></g></g></g><g class="node" id="E" transform="translate(62,579.7000122070312)" style="opacity: 1;"><rect rx="5" ry="5" x="-42" y="-19.5" width="84" height="39"/><g class="label" transform="translate(0,0)"><g transform="translate(-32,-9.5)"><foreignobject width="64" height="19"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">&#x767B;&#x5F55;&#x903B;&#x8F91;</div></foreignobject></g></g></g><g class="node" id="F" transform="translate(196,579.7000122070312)" style="opacity: 1;"><rect rx="5" ry="5" x="-42" y="-19.5" width="84" height="39"/><g class="label" transform="translate(0,0)"><g transform="translate(-32,-9.5)"><foreignobject width="64" height="19"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">&#x67E5;&#x8BE2;&#x903B;&#x8F91;</div></foreignobject></g></g></g><g class="node" id="G" transform="translate(306.8125,579.7000122070312)" style="opacity: 1;"><rect rx="5" ry="5" x="-18.8125" y="-19.5" width="37.625" height="39"/><g class="label" transform="translate(0,0)"><g transform="translate(-8.8125,-9.5)"><foreignobject width="17.625" height="19"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">...</div></foreignobject></g></g></g><g class="node" id="C" transform="translate(360.5562515258789,412.90000915527344)" style="opacity: 1;"><rect rx="0" ry="0" x="-90" y="-19.5" width="180" height="39"/><g class="label" transform="translate(0,0)"><g transform="translate(-80,-9.5)"><foreignobject width="160" height="19"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">&#x5C06;&#x53D1;&#x9001;&#x5668;&#x72B6;&#x6001;&#x7F6E;&#x4E3A;&#x5931;&#x8D25;</div></foreignobject></g></g></g><g class="node" id="H" transform="translate(182.7437515258789,668.7000122070312)" style="opacity: 1;"><rect rx="0" ry="0" x="-98" y="-19.5" width="196" height="39"/><g class="label" transform="translate(0,0)"><g transform="translate(-88,-9.5)"><foreignobject width="176" height="19"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">&#x53D1;&#x9001;&#x54CD;&#x5E94;&#x6570;&#x636E;&#x56DE;&#x7ED9;&#x5BA2;&#x6237;&#x7AEF;</div></foreignobject></g></g></g></g></g></g></svg>
+</div>
+<!--endmermaid-->
+
+</p>
 <p>&#x524D;&#x9762;&#x8BB2;&#x5230;&#x4E86;&#x63A5;&#x6536;&#x7EBF;&#x7A0B;&#x5728;&#x6536;&#x5230;&#x65B0;&#x6570;&#x636E;&#x65F6;&#x4F1A;&#x5C06;&#x6570;&#x636E;&#x63D2;&#x5165;&#x961F;&#x5217;&#xFF0C;&#x90A3;&#x4E48;&#x5DE5;&#x4F5C;&#x7EBF;&#x7A0B;&#x81EA;&#x7136;&#x662F;&#x8981;&#x53D6;&#x6570;&#x636E;&#x4E86;&#xFF0C;&#x53D6;&#x6570;&#x636E;&#x7684;&#x4EE3;&#x7801;&#x5982;&#x4E0B;&#xFF1A;</p>
 <pre><code class="lang-c++"><span class="hljs-keyword">while</span> (<span class="hljs-literal">true</span>)
 {
@@ -643,112 +668,6 @@
     }
 };
 </code></pre>
-<h4 id="&#x5177;&#x4F53;&#x4E1A;&#x52A1;&#x903B;&#x8F91;">&#x5177;&#x4F53;&#x4E1A;&#x52A1;&#x903B;&#x8F91;</h4>
-<p>&#x8BF7;&#x6C42;&#x5BF9;&#x5E94;&#x7684;&#x5177;&#x4F53;&#x4E1A;&#x52A1;&#x903B;&#x8F91;&#x6211;&#x53EA;&#x6253;&#x7B97;&#x9009;&#x8BB2;&#xFF0C;&#x6BD5;&#x7ADF;&#x79CD;&#x7C7B;&#x592A;&#x591A;&#xFF08;&#x767B;&#x5F55;&#x3001;&#x6CE8;&#x518C;&#x3001;&#x67E5;&#x8BE2;&#x3001;&#x5220;&#x9664;&#x67E5;&#x8BE2;&#x8BB0;&#x5F55;&#x3001;&#x67E5;&#x770B;&#x804C;&#x4F4D;&#x8BE6;&#x60C5;&#x3001;&#x6DFB;&#x52A0;&#x4EFB;&#x52A1;&#x3001;&#x5220;&#x9664;&#x4EFB;&#x52A1;&#x7B49;&#x7B49;&#xFF09;&#x5168;&#x90E8;&#x5C55;&#x5F00;&#x6765;&#x5C31;&#x592A;&#x591A;&#x4E86;&#xFF0C;&#x800C;&#x4E14;&#x5185;&#x5BB9;&#x5927;&#x540C;&#x5C0F;&#x5F02;&#x6CA1;&#x5FC5;&#x8981;&#x5168;&#x90E8;&#x8BB2;&#x3002;</p>
-<p>&#x63A5;&#x4E0B;&#x6765;&#x8BB2;&#x89E3;&#x4E00;&#x4E0B;&#x767B;&#x5F55;&#x548C;&#x67E5;&#x8BE2;&#x8BF7;&#x6C42;&#x7684;&#x5904;&#x7406;&#xFF1A;</p>
-<h5 id="&#x767B;&#x5F55;">&#x767B;&#x5F55;</h5>
-<p>&#x5148;&#x4E0A;&#x6D41;&#x7A0B;&#x56FE;&#xFF1A;</p>
-<p>
-<!--mermaid-->
-<div>
-<svg id="mermaid-1539680776041" width="100%" xmlns="http://www.w3.org/2000/svg" style="max-width: 124.640625px;" viewbox="0 0 124.640625 233"><style>#mermaid-1539680776041 .label{font-family:trebuchet ms,verdana,arial;color:#333}#mermaid-1539680776041 .node circle,#mermaid-1539680776041 .node ellipse,#mermaid-1539680776041 .node polygon,#mermaid-1539680776041 .node rect{fill:#cde498;stroke:#13540c;stroke-width:1px}#mermaid-1539680776041 .node.clickable{cursor:pointer}#mermaid-1539680776041 .arrowheadPath{fill:green}#mermaid-1539680776041 .edgePath .path{stroke:green;stroke-width:1.5px}#mermaid-1539680776041 .edgeLabel{background-color:#e8e8e8}#mermaid-1539680776041 .cluster rect{fill:#cdffb2!important;stroke:#6eaa49!important;stroke-width:1px!important}#mermaid-1539680776041 .cluster text{fill:#333}#mermaid-1539680776041 div.mermaidTooltip{position:absolute;text-align:center;max-width:200px;padding:2px;font-family:trebuchet ms,verdana,arial;font-size:12px;background:#cdffb2;border:1px solid #6eaa49;border-radius:2px;pointer-events:none;z-index:100}#mermaid-1539680776041 .actor{stroke:#13540c;fill:#cde498}#mermaid-1539680776041 text.actor{fill:#000;stroke:none}#mermaid-1539680776041 .actor-line{stroke:grey}#mermaid-1539680776041 .messageLine0{marker-end:"url(#arrowhead)"}#mermaid-1539680776041 .messageLine0,#mermaid-1539680776041 .messageLine1{stroke-width:1.5;stroke-dasharray:"2 2";stroke:#333}#mermaid-1539680776041 #arrowhead{fill:#333}#mermaid-1539680776041 #crosshead path{fill:#333!important;stroke:#333!important}#mermaid-1539680776041 .messageText{fill:#333;stroke:none}#mermaid-1539680776041 .labelBox{stroke:#326932;fill:#cde498}#mermaid-1539680776041 .labelText,#mermaid-1539680776041 .loopText{fill:#000;stroke:none}#mermaid-1539680776041 .loopLine{stroke-width:2;stroke-dasharray:"2 2";marker-end:"url(#arrowhead)";stroke:#326932}#mermaid-1539680776041 .note{stroke:#6eaa49;fill:#fff5ad}#mermaid-1539680776041 .noteText{fill:#000;stroke:none;font-family:trebuchet ms,verdana,arial;font-size:14px}#mermaid-1539680776041 .section{stroke:none;opacity:.2}#mermaid-1539680776041 .section0,#mermaid-1539680776041 .section2{fill:#6eaa49}#mermaid-1539680776041 .section1,#mermaid-1539680776041 .section3{fill:#fff;opacity:.2}#mermaid-1539680776041 .sectionTitle0,#mermaid-1539680776041 .sectionTitle1,#mermaid-1539680776041 .sectionTitle2,#mermaid-1539680776041 .sectionTitle3{fill:#333}#mermaid-1539680776041 .sectionTitle{text-anchor:start;font-size:11px;text-height:14px}#mermaid-1539680776041 .grid .tick{stroke:#d3d3d3;opacity:.3;shape-rendering:crispEdges}#mermaid-1539680776041 .grid path{stroke-width:0}#mermaid-1539680776041 .today{fill:none;stroke:red;stroke-width:2px}#mermaid-1539680776041 .task{stroke-width:2}#mermaid-1539680776041 .taskText{text-anchor:middle;font-size:11px}#mermaid-1539680776041 .taskTextOutsideRight{fill:#000;text-anchor:start;font-size:11px}#mermaid-1539680776041 .taskTextOutsideLeft{fill:#000;text-anchor:end;font-size:11px}#mermaid-1539680776041 .taskText0,#mermaid-1539680776041 .taskText1,#mermaid-1539680776041 .taskText2,#mermaid-1539680776041 .taskText3{fill:#fff}#mermaid-1539680776041 .task0,#mermaid-1539680776041 .task1,#mermaid-1539680776041 .task2,#mermaid-1539680776041 .task3{fill:#487e3a;stroke:#13540c}#mermaid-1539680776041 .taskTextOutside0,#mermaid-1539680776041 .taskTextOutside1,#mermaid-1539680776041 .taskTextOutside2,#mermaid-1539680776041 .taskTextOutside3{fill:#000}#mermaid-1539680776041 .active0,#mermaid-1539680776041 .active1,#mermaid-1539680776041 .active2,#mermaid-1539680776041 .active3{fill:#cde498;stroke:#13540c}#mermaid-1539680776041 .activeText0,#mermaid-1539680776041 .activeText1,#mermaid-1539680776041 .activeText2,#mermaid-1539680776041 .activeText3{fill:#000!important}#mermaid-1539680776041 .done0,#mermaid-1539680776041 .done1,#mermaid-1539680776041 .done2,#mermaid-1539680776041 .done3{stroke:grey;fill:#d3d3d3;stroke-width:2}#mermaid-1539680776041 .doneText0,#mermaid-1539680776041 .doneText1,#mermaid-1539680776041 .doneText2,#mermaid-1539680776041 .doneText3{fill:#000!important}#mermaid-1539680776041 .crit0,#mermaid-1539680776041 .crit1,#mermaid-1539680776041 .crit2,#mermaid-1539680776041 .crit3{stroke:#f88;fill:red;stroke-width:2}#mermaid-1539680776041 .activeCrit0,#mermaid-1539680776041 .activeCrit1,#mermaid-1539680776041 .activeCrit2,#mermaid-1539680776041 .activeCrit3{stroke:#f88;fill:#cde498;stroke-width:2}#mermaid-1539680776041 .doneCrit0,#mermaid-1539680776041 .doneCrit1,#mermaid-1539680776041 .doneCrit2,#mermaid-1539680776041 .doneCrit3{stroke:#f88;fill:#d3d3d3;stroke-width:2;cursor:pointer;shape-rendering:crispEdges}#mermaid-1539680776041 .activeCritText0,#mermaid-1539680776041 .activeCritText1,#mermaid-1539680776041 .activeCritText2,#mermaid-1539680776041 .activeCritText3,#mermaid-1539680776041 .doneCritText0,#mermaid-1539680776041 .doneCritText1,#mermaid-1539680776041 .doneCritText2,#mermaid-1539680776041 .doneCritText3{fill:#000!important}#mermaid-1539680776041 .titleText{text-anchor:middle;font-size:18px;fill:#000}#mermaid-1539680776041 g.classGroup text{fill:#13540c;stroke:none;font-family:trebuchet ms,verdana,arial;font-size:10px}#mermaid-1539680776041 g.classGroup rect{fill:#cde498;stroke:#13540c}#mermaid-1539680776041 g.classGroup line{stroke:#13540c;stroke-width:1}#mermaid-1539680776041 .classLabel .box{stroke:none;stroke-width:0;fill:#cde498;opacity:.5}#mermaid-1539680776041 .classLabel .label{fill:#13540c;font-size:10px}#mermaid-1539680776041 .relation{stroke:#13540c;stroke-width:1;fill:none}#mermaid-1539680776041 #compositionEnd,#mermaid-1539680776041 #compositionStart{fill:#13540c;stroke:#13540c;stroke-width:1}#mermaid-1539680776041 #aggregationEnd,#mermaid-1539680776041 #aggregationStart{fill:#cde498;stroke:#13540c;stroke-width:1}#mermaid-1539680776041 #dependencyEnd,#mermaid-1539680776041 #dependencyStart,#mermaid-1539680776041 #extensionEnd,#mermaid-1539680776041 #extensionStart{fill:#13540c;stroke:#13540c;stroke-width:1}#mermaid-1539680776041 .branch-label,#mermaid-1539680776041 .commit-id,#mermaid-1539680776041 .commit-msg{fill:#d3d3d3;color:#d3d3d3}</style><style>#mermaid-1539680776041 {
-    color: rgb(0, 0, 0);
-    font: normal normal 400 normal 16px / normal "Times New Roman";
-  }</style><g transform="translate(-12, -12)"><g class="output"><g class="clusters"/><g class="edgePaths"><g class="edgePath" style="opacity: 1;"><path class="path" d="M59.47265625,56.01492169802029L34.53125,84L34.53125,109" marker-end="url(#arrowhead14)" style="fill:none"/><defs><marker id="arrowhead14" viewbox="0 0 10 10" refx="9" refy="5" markerunits="strokeWidth" markerwidth="8" markerheight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"/></marker></defs></g><g class="edgePath" style="opacity: 1;"><path class="path" d="M88.91015625,56.01492169802029L113.8515625,84L113.8515625,109" marker-end="url(#arrowhead15)" style="fill:none"/><defs><marker id="arrowhead15" viewbox="0 0 10 10" refx="9" refy="5" markerunits="strokeWidth" markerwidth="8" markerheight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"/></marker></defs></g><g class="edgePath" style="opacity: 1;"><path class="path" d="M34.53125,148L34.53125,173L59.28515625,200.77469713385207" marker-end="url(#arrowhead16)" style="fill:none"/><defs><marker id="arrowhead16" viewbox="0 0 10 10" refx="9" refy="5" markerunits="strokeWidth" markerwidth="8" markerheight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"/></marker></defs></g><g class="edgePath" style="opacity: 1;"><path class="path" d="M113.8515625,148L113.8515625,173L89.09765625,200.77469713385207" marker-end="url(#arrowhead17)" style="fill:none"/><defs><marker id="arrowhead17" viewbox="0 0 10 10" refx="9" refy="5" markerunits="strokeWidth" markerwidth="8" markerheight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"/></marker></defs></g></g><g class="edgeLabels"><g class="edgeLabel" transform="" style="opacity: 1;"><g transform="translate(0,0)" class="label"><foreignobject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="edgeLabel"/></div></foreignobject></g></g><g class="edgeLabel" transform="" style="opacity: 1;"><g transform="translate(0,0)" class="label"><foreignobject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="edgeLabel"/></div></foreignobject></g></g><g class="edgeLabel" transform="" style="opacity: 1;"><g transform="translate(0,0)" class="label"><foreignobject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="edgeLabel"/></div></foreignobject></g></g><g class="edgeLabel" transform="" style="opacity: 1;"><g transform="translate(0,0)" class="label"><foreignobject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="edgeLabel"/></div></foreignobject></g></g></g><g class="nodes"><g class="node" id="A" transform="translate(74.19140625,39.5)" style="opacity: 1;"><rect rx="0" ry="0" x="-14.71875" y="-19.5" width="29.4375" height="39"/><g class="label" transform="translate(0,0)"><g transform="translate(-4.71875,-9.5)"><foreignobject width="9.4375" height="19"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">A</div></foreignobject></g></g></g><g class="node" id="B" transform="translate(34.53125,128.5)" style="opacity: 1;"><rect rx="0" ry="0" x="-14.53125" y="-19.5" width="29.0625" height="39"/><g class="label" transform="translate(0,0)"><g transform="translate(-4.53125,-9.5)"><foreignobject width="9.0625" height="19"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">B</div></foreignobject></g></g></g><g class="node" id="C" transform="translate(113.8515625,128.5)" style="opacity: 1;"><rect rx="0" ry="0" x="-14.7890625" y="-19.5" width="29.578125" height="39"/><g class="label" transform="translate(0,0)"><g transform="translate(-4.7890625,-9.5)"><foreignobject width="9.578125" height="19"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">C</div></foreignobject></g></g></g><g class="node" id="D" transform="translate(74.19140625,217.5)" style="opacity: 1;"><rect rx="0" ry="0" x="-14.90625" y="-19.5" width="29.8125" height="39"/><g class="label" transform="translate(0,0)"><g transform="translate(-4.90625,-9.5)"><foreignobject width="9.8125" height="19"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">D</div></foreignobject></g></g></g></g></g></g></svg>
-</div>
-<!--endmermaid-->
-
-</p>
-<p>&#x4EE3;&#x7801;&#xFF1A;</p>
-<pre><code class="lang-c++"><span class="hljs-keyword">void</span> TencentJobUserServer::_deal_with_login_request(<span class="hljs-keyword">const</span> TencentJobHunterMessage::Request&amp; request, Base::AsioServer::ResponseSender* response_sender_ptr)
-{
-    <span class="hljs-comment">//&#x79D8;&#x94A5;</span>
-    <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span>* key = Conf.AesKey.c_str();
-
-    <span class="hljs-comment">//&#x521B;&#x5EFA;&#x54CD;&#x5E94;&#x4FE1;&#x606F;</span>
-    TencentJobHunterMessage::Response response;
-    response.set_type(TencentJobHunterMessage::Type::LOGIN);
-    response.set_request_time(request.request_time());
-
-    <span class="hljs-comment">//&#x89E3;&#x6790;&#x5BA2;&#x6237;&#x7AEF;&#x8BF7;&#x6C42;</span>
-    <span class="hljs-keyword">bool</span> success_flag = <span class="hljs-literal">false</span>;
-    Model::User* user;
-    Model::Session* session;
-    <span class="hljs-built_in">std</span>::<span class="hljs-built_in">string</span> session_id = request.session();
-
-    <span class="hljs-keyword">if</span> (session_id != <span class="hljs-string">&quot;&quot;</span>)
-    {
-        <span class="hljs-keyword">if</span> ((session = Model::Session::GetSessionPointer(request.session())) != <span class="hljs-literal">nullptr</span>){
-            <span class="hljs-comment">//&#x57FA;&#x4E8E;session&#x7684;&#x5FEB;&#x901F;&#x767B;&#x5F55;</span>
-            user = &amp;session-&gt;get_user();
-            success_flag = <span class="hljs-literal">true</span>;
-        }
-        <span class="hljs-keyword">else</span>
-        {
-            _send_response(response, response_sender_ptr, TencentJobHunterMessage::ErrorCode::SESSION_INVALID_ID);
-            <span class="hljs-keyword">return</span>;
-        }
-    }
-    <span class="hljs-keyword">else</span>
-    {
-        <span class="hljs-built_in">std</span>::<span class="hljs-built_in">string</span> username = request.username();
-        <span class="hljs-built_in">std</span>::<span class="hljs-built_in">string</span> password = request.password();
-
-        user = Model::User::GetPointer(username);
-
-        <span class="hljs-keyword">if</span> (user != <span class="hljs-literal">nullptr</span>)
-        {
-            <span class="hljs-built_in">std</span>::<span class="hljs-built_in">string</span> salt = user-&gt;get_salt();
-            <span class="hljs-built_in">std</span>::<span class="hljs-built_in">string</span> m_pass_md5 = user-&gt;get_pass();
-            <span class="hljs-built_in">std</span>::<span class="hljs-built_in">string</span> pass_md5 = Common::CryptoHelper::MD5(password, salt);
-
-            <span class="hljs-comment">//&#x5BC6;&#x7801;&#x6BD4;&#x5BF9;&#x6B63;&#x786E;&#xFF0C;&#x767B;&#x5F55;&#x6210;&#x529F;</span>
-            <span class="hljs-keyword">if</span> (pass_md5 == m_pass_md5)
-            {
-                success_flag = <span class="hljs-literal">true</span>;
-
-                <span class="hljs-comment">//&#x521B;&#x5EFA;session&#x5E76;&#x4FDD;&#x5B58;</span>
-                <span class="hljs-comment">//&#x5982;&#x679C;&#x6CA1;&#x6709;session_id&#x5219;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x5168;&#x65B0;&#x7684;</span>
-                <span class="hljs-keyword">if</span> (!Model::Session::GetSessionIdByUser(*user, session_id))
-                {
-                    Model::Session&amp; session =
-                        Model::Session::CreateSession(*user);
-                    session_id = session.get_id();
-                    user-&gt;set_session(session_id);
-                }
-            }
-        }
-    }
-
-    <span class="hljs-keyword">if</span> (success_flag)
-    {
-        <span class="hljs-comment">//&#x5C06;session&#x5199;&#x5165;response</span>
-        response.set_session(session_id);
-
-        <span class="hljs-comment">//&#x5199;&#x5165;&#x804C;&#x4F4D;&#x7C7B;&#x578B;&#x6620;&#x5C04;&#x6D88;&#x606F;</span>
-        response.mutable_job_related_info()-&gt;CopyFrom(Model::Job::GetRelatedInfo());
-
-        <span class="hljs-comment">//&#x5199;&#x5165;&#x67E5;&#x8BE2;&#x7ED3;&#x679C;&#x8BB0;&#x5F55;&#xFF08;&#x53EA;&#x5199;&#x5165;&#x6982;&#x8981;&#x4FE1;&#x606F;&#xFF0C;&#x4E0D;&#x5199;&#x5165;&#x8BE6;&#x7EC6;&#x6570;&#x636E;&#xFF09;</span>
-        user-&gt;set_query_result_info_proto(response.mutable_job_query_result_info());
-
-        <span class="hljs-comment">//TASK&#x5217;&#x8868;&#x7684;HASH&#xFF0C;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;HASH&#x503C;&#x662F;&#x5426;&#x6539;&#x53D8;&#x6765;&#x5224;&#x65AD;&#x4EFB;&#x52A1;&#x5217;&#x8868;&#x4EE5;&#x53CA;&#x67E5;&#x8BE2;&#x7ED3;&#x679C;&#x662F;&#x5426;&#x6709;&#x53D8;&#x5316;</span>
-        response.set_task_query_result_changed_time(user-&gt;get_task_query_result_changed_time());
-
-
-        response.set_error_code(TencentJobHunterMessage::ErrorCode::SUCCESS);
-    }
-    <span class="hljs-keyword">else</span>
-    {
-        <span class="hljs-comment">//&#x5931;&#x8D25;&#x8FD4;&#x56DE;1001&#xFF08;&#x7528;&#x6237;&#x540D;&#x5BC6;&#x7801;&#x9519;&#x8BEF;&#xFF09;  </span>
-        response.set_error_code(TencentJobHunterMessage::ErrorCode::LOGIN_INCORRECT_PASS);
-    }
-
-    _send_response(response, response_sender_ptr);
-
-}
-</code></pre>
-<p>&#x53EF;&#x4EE5;&#x770B;&#x5230;&#xFF0C;&#x767B;&#x5F55;&#x5206;&#x4E3A;&#x4E24;&#x79CD;&#xFF0C;&#x4E00;&#x79CD;&#x662F;&#x57FA;&#x4E8E;session&#x7684;&#x5FEB;&#x901F;&#x767B;&#x5F55;&#xFF0C;&#x4E00;&#x79CD;&#x662F;&#x57FA;&#x4E8E;&#x7528;&#x6237;&#x540D;&#x5BC6;&#x7801;&#x7684;&#x767B;&#x5F55;&#x3002;</p>
-<p>&#x5728;&#x7B2C;&#x4E00;&#x6B21;&#x767B;&#x5F55;&#x65F6;&#x4F1A;&#x4F7F;&#x7528;&#x7528;&#x6237;&#x540D;&#x5BC6;&#x7801;&#xFF0C;&#x4E00;&#x65E6;&#x6210;&#x529F;&#x767B;&#x5F55;&#x8FC7;&#xFF0C;&#x5BA2;&#x6237;&#x7AEF;&#x4E0B;&#x6B21;&#x4F1A;&#x4F7F;&#x7528;&#x670D;&#x52A1;&#x7AEF;&#x8FD4;&#x56DE;&#x7684;session&#x6765;&#x5FEB;&#x901F;&#x767B;&#x5F55;&#xFF0C;&#x76F4;&#x5230;session&#x5931;&#x6548;&#x3002;</p>
 
                                 
                                 </section>
@@ -781,7 +700,7 @@
                 </a>
                 
                 
-                <a href="../hunter.html" class="navigation navigation-next " aria-label="Next page: 任务处理模块">
+                <a href="biz.html" class="navigation navigation-next " aria-label="Next page: 请求处理(节选)">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -792,7 +711,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"工作线程池","level":"1.3.1.2.2","depth":4,"next":{"title":"任务处理模块","level":"1.3.1.3","depth":3,"path":"logic/server/hunter.md","ref":"logic/server/hunter.md","articles":[]},"previous":{"title":"接收线程","level":"1.3.1.2.1","depth":4,"path":"logic/server/server/receiver.md","ref":"logic/server/server/receiver.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["luda-toggle-chapters","luda-sticky-header","mermaid-flow","livereload"],"pluginsConfig":{"livereload":{},"search":{},"luda-sticky-header":{"myConfigKey":"it's the default value"},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"mermaid-flow":{},"highlight":{},"luda-toggle-chapters":{"myConfigKey":"it's the default value"},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"logic/server/server/worker.md","mtime":"2018-10-16T09:01:40.375Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-10-16T09:04:57.969Z"},"basePath":"../../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"工作线程池","level":"1.3.1.2.2","depth":4,"next":{"title":"请求处理(节选)","level":"1.3.1.2.3","depth":4,"path":"logic/server/server/biz.md","ref":"logic/server/server/biz.md","articles":[]},"previous":{"title":"接收线程","level":"1.3.1.2.1","depth":4,"path":"logic/server/server/receiver.md","ref":"logic/server/server/receiver.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["luda-toggle-chapters","luda-sticky-header","mermaid-flow","livereload"],"pluginsConfig":{"livereload":{},"search":{},"luda-sticky-header":{"myConfigKey":"it's the default value"},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"mermaid-flow":{},"highlight":{},"luda-toggle-chapters":{"myConfigKey":"it's the default value"},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"logic/server/server/worker.md","mtime":"2018-10-17T08:01:30.975Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-10-17T08:01:49.490Z"},"basePath":"../../..","book":{"language":""}});
         });
     </script>
 </div>
