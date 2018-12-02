@@ -1,0 +1,852 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>查询表达式编译器 · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-luda-toggle-chapters/luda-toggle-chapters.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-luda-sticky-header/luda-sticky-header.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="queryexp/exp1.html" />
+    
+    
+    <link rel="prev" href="../base.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../../">
+            
+                <a href="../../../">
+            
+                    
+                    前言
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.1.1" data-path="../../../intro/why.html">
+            
+                <a href="../../../intro/why.html">
+            
+                    
+                    项目的由来
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.1.2" data-path="../../../intro/what.html">
+            
+                <a href="../../../intro/what.html">
+            
+                    
+                    项目介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../../../intro.html">
+            
+                <a href="../../../intro.html">
+            
+                    
+                    使用说明
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="../../../manual/query.html">
+            
+                <a href="../../../manual/query.html">
+            
+                    
+                    查询
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="../../../manual/task.html">
+            
+                <a href="../../../manual/task.html">
+            
+                    
+                    任务
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="../../../manual/other.html">
+            
+                <a href="../../../manual/other.html">
+            
+                    
+                    其他
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../../../logic.html">
+            
+                <a href="../../../logic.html">
+            
+                    
+                    程序架构&核心代码
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="../../server.html">
+            
+                <a href="../../server.html">
+            
+                    
+                    服务端
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1.1" data-path="../clawer.html">
+            
+                <a href="../clawer.html">
+            
+                    
+                    信息抓取模块
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1.1.1" data-path="../clawer/spider.html">
+            
+                <a href="../clawer/spider.html">
+            
+                    
+                    爬虫子模块
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1.1.1.1" data-path="../clawer/spider/tactics.html">
+            
+                <a href="../clawer/spider/tactics.html">
+            
+                    
+                    抓取策略
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.1.1.2" data-path="../clawer/spider/continue.html">
+            
+                <a href="../clawer/spider/continue.html">
+            
+                    
+                    续做功能
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.1.1.3" data-path="../clawer/spider/firstpage.html">
+            
+                <a href="../clawer/spider/firstpage.html">
+            
+                    
+                    第1页判断
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.1.2" data-path="../clawer/parser.html">
+            
+                <a href="../clawer/parser.html">
+            
+                    
+                    数据解析子模块
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.2" data-path="../server.html">
+            
+                <a href="../server.html">
+            
+                    
+                    请求处理模块
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1.2.1" data-path="../server/receiver.html">
+            
+                <a href="../server/receiver.html">
+            
+                    
+                    接收线程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.2.2" data-path="../server/worker.html">
+            
+                <a href="../server/worker.html">
+            
+                    
+                    工作线程池
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.2.3" data-path="../server/biz.html">
+            
+                <a href="../server/biz.html">
+            
+                    
+                    请求处理(节选)
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.3" data-path="../hunter.html">
+            
+                <a href="../hunter.html">
+            
+                    
+                    任务处理模块
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.4" data-path="../model.html">
+            
+                <a href="../model.html">
+            
+                    
+                    数据访问层
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1.4.1" data-path="../model/job.html">
+            
+                <a href="../model/job.html">
+            
+                    
+                    职位类
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.4.2" data-path="../model/user.html">
+            
+                <a href="../model/user.html">
+            
+                    
+                    用户类
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.4.3" data-path="../model/session.html">
+            
+                <a href="../model/session.html">
+            
+                    
+                    会话类
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.4.4" data-path="../model/queryresult.html">
+            
+                <a href="../model/queryresult.html">
+            
+                    
+                    查询结果类
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.4.5" data-path="../model/task.html">
+            
+                <a href="../model/task.html">
+            
+                    
+                    任务类
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.4.6" data-path="../model/clawresult.html">
+            
+                <a href="../model/clawresult.html">
+            
+                    
+                    抓取结果类
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.5" data-path="../base.html">
+            
+                <a href="../base.html">
+            
+                    
+                    公共组件
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter active" data-level="1.3.1.5.1" data-path="queryexp.html">
+            
+                <a href="queryexp.html">
+            
+                    
+                    查询表达式编译器
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1.5.1.1" data-path="queryexp/exp1.html">
+            
+                <a href="queryexp/exp1.html">
+            
+                    
+                    关键词编译器
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.5.1.2" data-path="queryexp/exp2.html">
+            
+                <a href="queryexp/exp2.html">
+            
+                    
+                    表达式编译器
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.5.2" data-path="database.html">
+            
+                <a href="database.html">
+            
+                    
+                    数据库管理类
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1.5.2.1" data-path="database/sqltask.html">
+            
+                <a href="database/sqltask.html">
+            
+                    
+                    SQL任务
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.5.3" data-path="threadpool.html">
+            
+                <a href="threadpool.html">
+            
+                    
+                    线程池
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="../../client.html">
+            
+                <a href="../../client.html">
+            
+                    
+                    客户端
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" >
+            
+                <span>
+            
+                    
+                    附录
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="../../../manual/query/exp.html">
+            
+                <a href="../../../manual/query/exp.html">
+            
+                    
+                    查询表达式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="../../proto.html">
+            
+                <a href="../../proto.html">
+            
+                    
+                    通讯协议
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.2.1" data-path="../../proto/protobuf.html">
+            
+                <a href="../../proto/protobuf.html">
+            
+                    
+                    Protobuf
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../../.." >查询表达式编译器</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h2 id="&#x67E5;&#x8BE2;&#x8868;&#x8FBE;&#x5F0F;&#x7F16;&#x8BD1;&#x5668;">&#x67E5;&#x8BE2;&#x8868;&#x8FBE;&#x5F0F;&#x7F16;&#x8BD1;&#x5668;</h2>
+<p>&#x5173;&#x4E8E;&#x67E5;&#x8BE2;&#x8868;&#x8FBE;&#x5F0F;&#x7684;&#x8BE6;&#x7EC6;&#x8BED;&#x6CD5;(&#x8FD9;&#x91CC;)[/manual/query/exp.md]&#x5DF2;&#x7ECF;&#x8BB2;&#x8FF0;&#x8FC7;&#xFF0C;&#x8FD9;&#x91CC;&#x5C31;&#x4E0D;&#x518D;&#x91CD;&#x590D;&#x3002;<br></p>
+<p>&#x67E5;&#x8BE2;&#x8868;&#x8FBE;&#x5F0F;&#x7F16;&#x8BD1;&#x5668;&#x7684;&#x4F5C;&#x7528;&#x5C31;&#x662F;&#x5C06;&#x67E5;&#x8BE2;&#x8868;&#x8FBE;&#x5F0F;&#x7F16;&#x8BD1;&#x6210;&#x67E5;&#x8BE2;&#x8868;&#x8FBE;&#x5F0F;&#x5BF9;&#x8C61;&#xFF0C;&#x5B83;&#x6709;match&#x65B9;&#x6CD5;&#xFF0C;&#x53EF;&#x4EE5;&#x5224;&#x65AD;&#x88AB;&#x67E5;&#x804C;&#x4F4D;&#x662F;&#x5426;&#x6EE1;&#x8DB3;&#x8868;&#x8FBE;&#x5F0F;&#xFF0C;&#x6BD4;&#x5982;&#x8BF4;&#x4EE5;&#x4E0B;&#x4EE3;&#x7801;&#xFF1A;</p>
+<pre><code class="lang-C++"><span class="hljs-keyword">auto</span> expression = JobDetailQueryExpressionHelper::Parse(<span class="hljs-string">&quot;T{&#x9AD8;&#x7EA7;} &amp;&amp; R{Java &amp;&amp; !C++}&quot;</span>);
+Job&amp; job = ...;
+<span class="hljs-keyword">bool</span> result = expression.is_match(job);
+</code></pre>
+<p>&#x8FD9;&#x4E24;&#x884C;&#x4EE3;&#x7801;&#x9996;&#x5148;&#x7F16;&#x8BD1;&#x4E86;&#x4E00;&#x4E2A;&#x8868;&#x8FBE;&#x5F0F;&#xFF0C;&#x8868;&#x8FBE;&#x5F0F;&#x7684;&#x610F;&#x601D;&#x662F;&#x4E00;&#x4E2A;&#x804C;&#x4F4D;&#x6807;&#x9898;&#x91CC;&#x9700;&#x542B;&#x6709;&quot;&#x9AD8;&#x7EA7;&quot;&#xFF0C;&#x4E14;&#x804C;&#x4F4D;&#x804C;&#x8D23;&#x5305;&#x542B;&quot;Java&quot;&#x4F46;&#x4E0D;&#x5305;&#x542B;&quot;C++&quot;&#x3002;</p>
+<p>&#x5F97;&#x5230;&#x8868;&#x8FBE;&#x5F0F;&#x5BF9;&#x8C61;&#x540E;&#xFF0C;&#x5C31;&#x53EF;&#x4EE5;&#x5224;&#x65AD;&#x4E00;&#x4E2A;&#x804C;&#x4F4D;&#x662F;&#x5426;&#x6EE1;&#x8DB3;&#x8868;&#x8FBE;&#x5F0F;&#xFF0C;&#x67E5;&#x8BE2;&#x529F;&#x80FD;&#x5C31;&#x662F;&#x5229;&#x7528;&#x8FD9;&#x4E2A;&#x8868;&#x8FBE;&#x5F0F;&#x6765;&#x5B9E;&#x73B0;&#x7684;&#x3002;</p>
+<p>&#x672C;&#x7AE0;&#x8282;&#x5C06;&#x8981;&#x8BB2;&#x7684;&#x662F;&#x5C31;&#x662F;&#x8FD9;&#x4E2A;&#x67E5;&#x8BE2;&#x8868;&#x8FBE;&#x5F0F;&#x7F16;&#x8BD1;&#x5668;&#x7684;&#x539F;&#x7406;&#x53CA;&#x6838;&#x5FC3;&#x4EE3;&#x7801;&#x3002;</p>
+<p>&#x6211;&#x4EEC;&#x6765;&#x7B80;&#x5355;&#x56DE;&#x987E;&#x4E0B;&#x8BED;&#x6CD5;&#xFF1A;<br>
+&#x67E5;&#x8BE2;&#x8868;&#x8FBE;&#x5F0F; = &#x67E5;&#x8BE2;&#x7EC4;1 [&#x4E0E;/&#x6216;] &#x67E5;&#x8BE2;&#x7EC4;2 [&#x4E0E;/&#x6216;] ... &#x67E5;&#x8BE2;&#x7EC4;N<br>
+&#x67E5;&#x8BE2;&#x7EC4; = &#x7C7B;&#x578B;&#x4EE3;&#x7801;{&#x5173;&#x952E;&#x8BCD;}<br>
+&#x5173;&#x952E;&#x8BCD;&#x5219;&#x662F;&#x7531;&#x57FA;&#x672C;&#x5173;&#x952E;&#x8BCD;&#x53CA;&#x903B;&#x8F91;&#x8FD0;&#x7B97;&#x7B26;&#x6784;&#x6210;&#x3002;</p>
+<p>&#x7531;&#x4E0A;&#x53EF;&#x77E5;&#xFF0C;&#x5B8C;&#x6574;&#x7684;&#x8868;&#x8FBE;&#x5F0F;&#x53EF;&#x4EE5;&#x62C6;&#x5206;&#x6210;&#x67E5;&#x8BE2;&#x7EC4;&#x4E4B;&#x95F4;&#x7684;&#x903B;&#x8F91;&#x8FD0;&#x7B97;&#xFF1B;&#x800C;&#x67E5;&#x8BE2;&#x7EC4;&#x53EF;&#x4EE5;&#x62C6;&#x5206;&#x4E3A;&#x7C7B;&#x578B;&#x4EE3;&#x7801;+&#x5173;&#x952E;&#x8BCD;&#x3002;</p>
+<p>&#x56E0;&#x6B64;&#x6211;&#x5728;&#x8BBE;&#x8BA1;&#x65F6;&#xFF0C;&#x5C06;&#x6574;&#x4E2A;&#x7F16;&#x8BD1;&#x5668;&#x6309;&#x7ED3;&#x6784;&#x5206;&#x4E3A;&#x4E86;&#x4E24;&#x90E8;&#x5206;&#xFF1A;<strong>&#x8868;&#x8FBE;&#x5F0F;&#x7F16;&#x8BD1;&#x5668;</strong>&#x548C;<strong>&#x5173;&#x952E;&#x8BCD;&#x7F16;&#x8BD1;&#x5668;</strong></p>
+<p>&#x524D;&#x8005;&#x7684;&#x7F16;&#x8BD1;&#x7ED3;&#x679C;&#x662F;&#x8868;&#x8FBE;&#x5F0F;&#x5BF9;&#x8C61;&#xFF0C;&#x7531;&#x4E00;&#x4E2A;&#x6216;&#x591A;&#x4E2A;&#x67E5;&#x8BE2;&#x7EC4;&#x7528;&#x903B;&#x8F91;&#x8FD0;&#x7B97;&#x7B26;&#x590D;&#x5408;&#x800C;&#x6210;</p>
+<p>&#x540E;&#x8005;&#x7684;&#x7F16;&#x8BD1;&#x7ED3;&#x679C;&#x662F;&#x5173;&#x952E;&#x8BCD;&#x5BF9;&#x8C61;&#xFF0C;&#x662F;&#x67E5;&#x8BE2;&#x7EC4;&#x7684;&#x5185;&#x90E8;&#x5BF9;&#x8C61;&#x3002;</p>
+<p>&#x8868;&#x8FBE;&#x5F0F;&#x5B57;&#x7B26;&#x4E32;&#x88AB;&#x7F16;&#x8BD1;&#x7684;&#x6D41;&#x7A0B;&#x56FE;&#xFF1A;</p>
+<p>
+<!--mermaid-->
+<div>
+<svg id="mermaid-1543718216700" width="100%" xmlns="http://www.w3.org/2000/svg" style="max-width: 148px;" viewbox="0 0 148 327"><style>#mermaid-1543718216700 .label{font-family:trebuchet ms,verdana,arial;color:#333}#mermaid-1543718216700 .node circle,#mermaid-1543718216700 .node ellipse,#mermaid-1543718216700 .node polygon,#mermaid-1543718216700 .node rect{fill:#cde498;stroke:#13540c;stroke-width:1px}#mermaid-1543718216700 .node.clickable{cursor:pointer}#mermaid-1543718216700 .arrowheadPath{fill:green}#mermaid-1543718216700 .edgePath .path{stroke:green;stroke-width:1.5px}#mermaid-1543718216700 .edgeLabel{background-color:#e8e8e8}#mermaid-1543718216700 .cluster rect{fill:#cdffb2!important;stroke:#6eaa49!important;stroke-width:1px!important}#mermaid-1543718216700 .cluster text{fill:#333}#mermaid-1543718216700 div.mermaidTooltip{position:absolute;text-align:center;max-width:200px;padding:2px;font-family:trebuchet ms,verdana,arial;font-size:12px;background:#cdffb2;border:1px solid #6eaa49;border-radius:2px;pointer-events:none;z-index:100}#mermaid-1543718216700 .actor{stroke:#13540c;fill:#cde498}#mermaid-1543718216700 text.actor{fill:#000;stroke:none}#mermaid-1543718216700 .actor-line{stroke:grey}#mermaid-1543718216700 .messageLine0{marker-end:"url(#arrowhead)"}#mermaid-1543718216700 .messageLine0,#mermaid-1543718216700 .messageLine1{stroke-width:1.5;stroke-dasharray:"2 2";stroke:#333}#mermaid-1543718216700 #arrowhead{fill:#333}#mermaid-1543718216700 #crosshead path{fill:#333!important;stroke:#333!important}#mermaid-1543718216700 .messageText{fill:#333;stroke:none}#mermaid-1543718216700 .labelBox{stroke:#326932;fill:#cde498}#mermaid-1543718216700 .labelText,#mermaid-1543718216700 .loopText{fill:#000;stroke:none}#mermaid-1543718216700 .loopLine{stroke-width:2;stroke-dasharray:"2 2";marker-end:"url(#arrowhead)";stroke:#326932}#mermaid-1543718216700 .note{stroke:#6eaa49;fill:#fff5ad}#mermaid-1543718216700 .noteText{fill:#000;stroke:none;font-family:trebuchet ms,verdana,arial;font-size:14px}#mermaid-1543718216700 .section{stroke:none;opacity:.2}#mermaid-1543718216700 .section0,#mermaid-1543718216700 .section2{fill:#6eaa49}#mermaid-1543718216700 .section1,#mermaid-1543718216700 .section3{fill:#fff;opacity:.2}#mermaid-1543718216700 .sectionTitle0,#mermaid-1543718216700 .sectionTitle1,#mermaid-1543718216700 .sectionTitle2,#mermaid-1543718216700 .sectionTitle3{fill:#333}#mermaid-1543718216700 .sectionTitle{text-anchor:start;font-size:11px;text-height:14px}#mermaid-1543718216700 .grid .tick{stroke:#d3d3d3;opacity:.3;shape-rendering:crispEdges}#mermaid-1543718216700 .grid path{stroke-width:0}#mermaid-1543718216700 .today{fill:none;stroke:red;stroke-width:2px}#mermaid-1543718216700 .task{stroke-width:2}#mermaid-1543718216700 .taskText{text-anchor:middle;font-size:11px}#mermaid-1543718216700 .taskTextOutsideRight{fill:#000;text-anchor:start;font-size:11px}#mermaid-1543718216700 .taskTextOutsideLeft{fill:#000;text-anchor:end;font-size:11px}#mermaid-1543718216700 .taskText0,#mermaid-1543718216700 .taskText1,#mermaid-1543718216700 .taskText2,#mermaid-1543718216700 .taskText3{fill:#fff}#mermaid-1543718216700 .task0,#mermaid-1543718216700 .task1,#mermaid-1543718216700 .task2,#mermaid-1543718216700 .task3{fill:#487e3a;stroke:#13540c}#mermaid-1543718216700 .taskTextOutside0,#mermaid-1543718216700 .taskTextOutside1,#mermaid-1543718216700 .taskTextOutside2,#mermaid-1543718216700 .taskTextOutside3{fill:#000}#mermaid-1543718216700 .active0,#mermaid-1543718216700 .active1,#mermaid-1543718216700 .active2,#mermaid-1543718216700 .active3{fill:#cde498;stroke:#13540c}#mermaid-1543718216700 .activeText0,#mermaid-1543718216700 .activeText1,#mermaid-1543718216700 .activeText2,#mermaid-1543718216700 .activeText3{fill:#000!important}#mermaid-1543718216700 .done0,#mermaid-1543718216700 .done1,#mermaid-1543718216700 .done2,#mermaid-1543718216700 .done3{stroke:grey;fill:#d3d3d3;stroke-width:2}#mermaid-1543718216700 .doneText0,#mermaid-1543718216700 .doneText1,#mermaid-1543718216700 .doneText2,#mermaid-1543718216700 .doneText3{fill:#000!important}#mermaid-1543718216700 .crit0,#mermaid-1543718216700 .crit1,#mermaid-1543718216700 .crit2,#mermaid-1543718216700 .crit3{stroke:#f88;fill:red;stroke-width:2}#mermaid-1543718216700 .activeCrit0,#mermaid-1543718216700 .activeCrit1,#mermaid-1543718216700 .activeCrit2,#mermaid-1543718216700 .activeCrit3{stroke:#f88;fill:#cde498;stroke-width:2}#mermaid-1543718216700 .doneCrit0,#mermaid-1543718216700 .doneCrit1,#mermaid-1543718216700 .doneCrit2,#mermaid-1543718216700 .doneCrit3{stroke:#f88;fill:#d3d3d3;stroke-width:2;cursor:pointer;shape-rendering:crispEdges}#mermaid-1543718216700 .activeCritText0,#mermaid-1543718216700 .activeCritText1,#mermaid-1543718216700 .activeCritText2,#mermaid-1543718216700 .activeCritText3,#mermaid-1543718216700 .doneCritText0,#mermaid-1543718216700 .doneCritText1,#mermaid-1543718216700 .doneCritText2,#mermaid-1543718216700 .doneCritText3{fill:#000!important}#mermaid-1543718216700 .titleText{text-anchor:middle;font-size:18px;fill:#000}#mermaid-1543718216700 g.classGroup text{fill:#13540c;stroke:none;font-family:trebuchet ms,verdana,arial;font-size:10px}#mermaid-1543718216700 g.classGroup rect{fill:#cde498;stroke:#13540c}#mermaid-1543718216700 g.classGroup line{stroke:#13540c;stroke-width:1}#mermaid-1543718216700 .classLabel .box{stroke:none;stroke-width:0;fill:#cde498;opacity:.5}#mermaid-1543718216700 .classLabel .label{fill:#13540c;font-size:10px}#mermaid-1543718216700 .relation{stroke:#13540c;stroke-width:1;fill:none}#mermaid-1543718216700 #compositionEnd,#mermaid-1543718216700 #compositionStart{fill:#13540c;stroke:#13540c;stroke-width:1}#mermaid-1543718216700 #aggregationEnd,#mermaid-1543718216700 #aggregationStart{fill:#cde498;stroke:#13540c;stroke-width:1}#mermaid-1543718216700 #dependencyEnd,#mermaid-1543718216700 #dependencyStart,#mermaid-1543718216700 #extensionEnd,#mermaid-1543718216700 #extensionStart{fill:#13540c;stroke:#13540c;stroke-width:1}#mermaid-1543718216700 .branch-label,#mermaid-1543718216700 .commit-id,#mermaid-1543718216700 .commit-msg{fill:#d3d3d3;color:#d3d3d3}</style><style>#mermaid-1543718216700 {
+    color: rgb(0, 0, 0);
+    font: normal normal 400 normal 16px / normal "Times New Roman";
+  }</style><g transform="translate(-12, -12)"><g class="output"><g class="clusters"/><g class="edgePaths"><g class="edgePath" style="opacity: 1;"><path class="path" d="M86,59L86,93.5L86,128" marker-end="url(#arrowhead14)" style="fill:none"/><defs><marker id="arrowhead14" viewbox="0 0 10 10" refx="9" refy="5" markerunits="strokeWidth" markerwidth="8" markerheight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"/></marker></defs></g><g class="edgePath" style="opacity: 1;"><path class="path" d="M86,167L86,229.5L86,292" marker-end="url(#arrowhead15)" style="fill:none"/><defs><marker id="arrowhead15" viewbox="0 0 10 10" refx="9" refy="5" markerunits="strokeWidth" markerwidth="8" markerheight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"/></marker></defs></g></g><g class="edgeLabels"><g class="edgeLabel" transform="translate(86,93.5)" style="opacity: 1;"><g transform="translate(-48,-9.5)" class="label"><foreignobject width="96" height="19"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="edgeLabel">&#x8868;&#x8FBE;&#x5F0F;&#x7F16;&#x8BD1;&#x5668;</span></div></foreignobject></g></g><g class="edgeLabel" transform="translate(86,229.5)" style="opacity: 1;"><g transform="translate(-64,-37.5)" class="label"><foreignobject width="128" height="75"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="edgeLabel">&#x7F16;&#x8BD1;&#x8868;&#x8FBE;&#x5F0F;&#x67E5;&#x8BE2;&#x7EC4;<br/>&#x5185;&#x90E8;&#x5173;&#x952E;&#x8BCD;<br/><br/>&#x5173;&#x952E;&#x8BCD;&#x7F16;&#x8BD1;&#x5668;</span></div></foreignobject></g></g></g><g class="nodes"><g class="node" id="string" transform="translate(86,39.5)" style="opacity: 1;"><rect rx="5" ry="5" x="-66" y="-19.5" width="132" height="39"/><g class="label" transform="translate(0,0)"><g transform="translate(-56,-9.5)"><foreignobject width="112" height="19"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">&#x8868;&#x8FBE;&#x5F0F;&#x7684;&#x5B57;&#x7B26;&#x4E32;</div></foreignobject></g></g></g><g class="node" id="exp_object" transform="translate(86,147.5)" style="opacity: 1;"><rect rx="5" ry="5" x="-66" y="-19.5" width="132" height="39"/><g class="label" transform="translate(0,0)"><g transform="translate(-56,-9.5)"><foreignobject width="112" height="19"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">&#x5F97;&#x5230;&#x8868;&#x8FBE;&#x5F0F;&#x5BF9;&#x8C61;</div></foreignobject></g></g></g><g class="node" id="keyword_object" transform="translate(86,311.5)" style="opacity: 1;"><rect rx="5" ry="5" x="-66" y="-19.5" width="132" height="39"/><g class="label" transform="translate(0,0)"><g transform="translate(-56,-9.5)"><foreignobject width="112" height="19"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">&#x5F97;&#x5230;&#x5173;&#x952E;&#x8BCD;&#x5BF9;&#x8C61;</div></foreignobject></g></g></g></g></g></g></svg>
+</div>
+<!--endmermaid-->
+
+</p>
+<p>&#x63A5;&#x4E0B;&#x6765;&#x5148;&#x4ECE;&#x8D1F;&#x8D23;&#x7F16;&#x8BD1;&#x67E5;&#x8BE2;&#x7EC4;&#x5185;&#x90E8;&#x5173;&#x952E;&#x8BCD;&#x7684;<strong>&#x5173;&#x952E;&#x8BCD;&#x7F16;&#x8BD1;&#x5668;</strong>&#x5F00;&#x59CB;&#x8BB2;&#x89E3;</p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="../base.html" class="navigation navigation-prev " aria-label="Previous page: 公共组件">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="queryexp/exp1.html" class="navigation navigation-next " aria-label="Next page: 关键词编译器">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"查询表达式编译器","level":"1.3.1.5.1","depth":4,"next":{"title":"关键词编译器","level":"1.3.1.5.1.1","depth":5,"path":"logic/server/base/queryexp/exp1.md","ref":"logic/server/base/queryexp/exp1.md","articles":[]},"previous":{"title":"公共组件","level":"1.3.1.5","depth":3,"path":"logic/server/base.md","ref":"logic/server/base.md","articles":[{"title":"查询表达式编译器","level":"1.3.1.5.1","depth":4,"path":"logic/server/base/queryexp.md","ref":"logic/server/base/queryexp.md","articles":[{"title":"关键词编译器","level":"1.3.1.5.1.1","depth":5,"path":"logic/server/base/queryexp/exp1.md","ref":"logic/server/base/queryexp/exp1.md","articles":[]},{"title":"表达式编译器","level":"1.3.1.5.1.2","depth":5,"path":"logic/server/base/queryexp/exp2.md","ref":"logic/server/base/queryexp/exp2.md","articles":[]}]},{"title":"数据库管理类","level":"1.3.1.5.2","depth":4,"path":"logic/server/base/database.md","ref":"logic/server/base/database.md","articles":[{"title":"SQL任务","level":"1.3.1.5.2.1","depth":5,"path":"logic/server/base/database/sqltask.md","ref":"logic/server/base/database/sqltask.md","articles":[]}]},{"title":"线程池","level":"1.3.1.5.3","depth":4,"path":"logic/server/base/threadpool.md","ref":"logic/server/base/threadpool.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["luda-toggle-chapters","luda-sticky-header","mermaid-flow","livereload"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"livereload":{},"search":{},"luda-sticky-header":{"myConfigKey":"it's the default value"},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"mermaid-flow":{},"highlight":{},"luda-toggle-chapters":{"myConfigKey":"it's the default value"},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","bak":"mermaid-flow","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"gitbook":"*"},"file":{"path":"logic/server/base/queryexp.md","mtime":"2018-11-12T08:20:38.480Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-12-02T02:36:28.823Z"},"basePath":"../../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../../../gitbook/gitbook.js"></script>
+    <script src="../../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-luda-toggle-chapters/luda-toggle-chapters.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-luda-sticky-header/luda-sticky-header.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-livereload/plugin.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

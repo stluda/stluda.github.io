@@ -1,0 +1,898 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>会话类 · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-luda-toggle-chapters/luda-toggle-chapters.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-luda-sticky-header/luda-sticky-header.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="queryresult.html" />
+    
+    
+    <link rel="prev" href="user.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../../">
+            
+                <a href="../../../">
+            
+                    
+                    前言
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.1.1" data-path="../../../intro/why.html">
+            
+                <a href="../../../intro/why.html">
+            
+                    
+                    项目的由来
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.1.2" data-path="../../../intro/what.html">
+            
+                <a href="../../../intro/what.html">
+            
+                    
+                    项目介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../../../intro.html">
+            
+                <a href="../../../intro.html">
+            
+                    
+                    使用说明
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="../../../manual/query.html">
+            
+                <a href="../../../manual/query.html">
+            
+                    
+                    查询
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="../../../manual/task.html">
+            
+                <a href="../../../manual/task.html">
+            
+                    
+                    任务
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="../../../manual/other.html">
+            
+                <a href="../../../manual/other.html">
+            
+                    
+                    其他
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../../../logic.html">
+            
+                <a href="../../../logic.html">
+            
+                    
+                    程序架构&核心代码
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="../../server.html">
+            
+                <a href="../../server.html">
+            
+                    
+                    服务端
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1.1" data-path="../clawer.html">
+            
+                <a href="../clawer.html">
+            
+                    
+                    信息抓取模块
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1.1.1" data-path="../clawer/spider.html">
+            
+                <a href="../clawer/spider.html">
+            
+                    
+                    爬虫子模块
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1.1.1.1" data-path="../clawer/spider/tactics.html">
+            
+                <a href="../clawer/spider/tactics.html">
+            
+                    
+                    抓取策略
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.1.1.2" data-path="../clawer/spider/continue.html">
+            
+                <a href="../clawer/spider/continue.html">
+            
+                    
+                    续做功能
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.1.1.3" data-path="../clawer/spider/firstpage.html">
+            
+                <a href="../clawer/spider/firstpage.html">
+            
+                    
+                    第1页判断
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.1.2" data-path="../clawer/parser.html">
+            
+                <a href="../clawer/parser.html">
+            
+                    
+                    数据解析子模块
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.2" data-path="../server.html">
+            
+                <a href="../server.html">
+            
+                    
+                    请求处理模块
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1.2.1" data-path="../server/receiver.html">
+            
+                <a href="../server/receiver.html">
+            
+                    
+                    接收线程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.2.2" data-path="../server/worker.html">
+            
+                <a href="../server/worker.html">
+            
+                    
+                    工作线程池
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.2.3" data-path="../server/biz.html">
+            
+                <a href="../server/biz.html">
+            
+                    
+                    请求处理(节选)
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.3" data-path="../hunter.html">
+            
+                <a href="../hunter.html">
+            
+                    
+                    任务处理模块
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.4" data-path="../model.html">
+            
+                <a href="../model.html">
+            
+                    
+                    数据访问层
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1.4.1" data-path="job.html">
+            
+                <a href="job.html">
+            
+                    
+                    职位类
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.4.2" data-path="user.html">
+            
+                <a href="user.html">
+            
+                    
+                    用户类
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.3.1.4.3" data-path="session.html">
+            
+                <a href="session.html">
+            
+                    
+                    会话类
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.4.4" data-path="queryresult.html">
+            
+                <a href="queryresult.html">
+            
+                    
+                    查询结果类
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.4.5" data-path="task.html">
+            
+                <a href="task.html">
+            
+                    
+                    任务类
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.4.6" data-path="clawresult.html">
+            
+                <a href="clawresult.html">
+            
+                    
+                    抓取结果类
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.5" data-path="../base.html">
+            
+                <a href="../base.html">
+            
+                    
+                    公共组件
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1.5.1" data-path="../base/queryexp.html">
+            
+                <a href="../base/queryexp.html">
+            
+                    
+                    查询表达式编译器
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1.5.1.1" data-path="../base/queryexp/exp1.html">
+            
+                <a href="../base/queryexp/exp1.html">
+            
+                    
+                    关键词编译器
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.5.1.2" data-path="../base/queryexp/exp2.html">
+            
+                <a href="../base/queryexp/exp2.html">
+            
+                    
+                    表达式编译器
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.5.2" data-path="../base/database.html">
+            
+                <a href="../base/database.html">
+            
+                    
+                    数据库管理类
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1.5.2.1" data-path="../base/database/sqltask.html">
+            
+                <a href="../base/database/sqltask.html">
+            
+                    
+                    SQL任务
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.5.3" data-path="../base/threadpool.html">
+            
+                <a href="../base/threadpool.html">
+            
+                    
+                    线程池
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="../../client.html">
+            
+                <a href="../../client.html">
+            
+                    
+                    客户端
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" >
+            
+                <span>
+            
+                    
+                    附录
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="../../../manual/query/exp.html">
+            
+                <a href="../../../manual/query/exp.html">
+            
+                    
+                    查询表达式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="../../proto.html">
+            
+                <a href="../../proto.html">
+            
+                    
+                    通讯协议
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.2.1" data-path="../../proto/protobuf.html">
+            
+                <a href="../../proto/protobuf.html">
+            
+                    
+                    Protobuf
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../../.." >会话类</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h2 id="&#x4F1A;&#x8BDD;&#x7C7B;">&#x4F1A;&#x8BDD;&#x7C7B;</h2>
+<p>&#x8FD9;&#x4E2A;&#x7C7B;&#x7684;&#x4F5C;&#x7528;&#x548C;&#x903B;&#x8F91;&#x6BD4;&#x8F83;&#x7B80;&#x5355;&#xFF0C;&#x7528;&#x6237;&#x5728;&#x767B;&#x5F55;&#x540E;&#x4F1A;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x4F1A;&#x8BDD;&#x7C7B;&#x7684;&#x5B9E;&#x4F8B;&#xFF0C;&#x4E4B;&#x540E;&#x5BA2;&#x6237;&#x7AEF;&#x53D1;&#x8D77;&#x5404;&#x79CD;&#x589E;&#x5220;&#x67E5;&#x6539;&#x64CD;&#x4F5C;&#xFF0C;&#x90FD;&#x4F1A;&#x9644;&#x5E26;&#x4E00;&#x4E2A;session_id&#xFF1B;&#x670D;&#x52A1;&#x7AEF;&#x5728;&#x6536;&#x5230;session_id&#x540E;&#xFF0C;&#x4F1A;&#x627E;&#x5230;&#x8FD9;&#x4E2A;&#x5B9E;&#x4F8B;&#xFF0C;&#x8FDB;&#x4E00;&#x6B65;&#x627E;&#x5230;&#x5176;&#x5BF9;&#x5E94;&#x7684;&#x7528;&#x6237;&#x5B9E;&#x4F8B;&#xFF0C;&#x6765;&#x6267;&#x884C;&#x5177;&#x4F53;&#x7684;&#x4E1A;&#x52A1;&#x903B;&#x8F91;&#x3002;</p>
+<p>&#x5C5E;&#x6027;&#x548C;&#x65B9;&#x6CD5;&#x5982;&#x4E0B;&#xFF1A;</p>
+<p><strong>&#x5B9E;&#x4F8B;&#x5C5E;&#x6027;&#xFF1A;</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">&#x5C5E;&#x6027;&#x540D;&#x79F0;</th>
+<th style="text-align:left">&#x7C7B;&#x578B;</th>
+<th style="text-align:left">&#x63CF;&#x8FF0;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">id</td>
+<td style="text-align:left">std::string</td>
+<td style="text-align:left">&#x4F1A;&#x8BDD;id&#xFF0C;&#x7528;&#x6237;&#x767B;&#x5F55;&#x65F6;&#x968F;&#x673A;&#x751F;&#x6210;&#xFF0C;&#x4F5C;&#x4E3A;&#x540E;&#x7EED;&#x901A;&#x4FE1;&#x8868;&#x660E;&#x8EAB;&#x4EFD;&#x7684;&#x51ED;&#x8BC1;&#x3002;</td>
+</tr>
+<tr>
+<td style="text-align:left">active_time</td>
+<td style="text-align:left">Base::DateTime</td>
+<td style="text-align:left">&#x8BE5;&#x4F1A;&#x8BDD;&#x6700;&#x540E;&#x4E00;&#x6B21;&#x6D3B;&#x52A8;&#x7684;&#x65F6;&#x95F4;</td>
+</tr>
+<tr>
+<td style="text-align:left">user</td>
+<td style="text-align:left">User&amp;</td>
+<td style="text-align:left">&#x5BF9;&#x5E94;&#x7684;&#x7528;&#x6237;&#x5B9E;&#x4F8B;&#x7684;&#x5F15;&#x7528;</td>
+</tr>
+</tbody>
+</table>
+<p><strong>&#x5B9E;&#x4F8B;&#x65B9;&#x6CD5;</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">&#x5B9E;&#x4F8B;&#x65B9;&#x6CD5;</th>
+<th style="text-align:left">&#x63CF;&#x8FF0;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">&#x5404;&#x5C5E;&#x6027;&#x7684;get&#x65B9;&#x6CD5;</td>
+<td style="text-align:left">&#x5305;&#x62EC;get_id()&#x3001;get_active_time()&#x3001;get_user()</td>
+</tr>
+</tbody>
+</table>
+<p><strong>&#x7C7B;&#x65B9;&#x6CD5;</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">&#x7C7B;&#x65B9;&#x6CD5;</th>
+<th style="text-align:left">&#x63CF;&#x8FF0;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">static Session&amp; CreateSession(User&amp; user)</td>
+<td style="text-align:left">&#x521B;&#x5EFA;session&#x5B9E;&#x4F8B;&#xFF0C;&#x9700;&#x8981;&#x4F20;&#x5165;&#x7528;&#x6237;&#x5B9E;&#x4F8B;&#x7684;&#x5F15;&#x7528;</td>
+</tr>
+<tr>
+<td style="text-align:left">static Session* GetSessionPointer(const std::string&amp; session_id)</td>
+<td style="text-align:left">&#x901A;&#x8FC7;session_id&#x83B7;&#x53D6;session&#x5B9E;&#x4F8B;</td>
+</tr>
+<tr>
+<td style="text-align:left">static bool EraseSessionByUser(const User&amp; user)</td>
+<td style="text-align:left">&#x5220;&#x9664;&#x7528;&#x6237;&#x5B9E;&#x4F8B;&#x5BF9;&#x5E94;&#x7684;session</td>
+</tr>
+<tr>
+<td style="text-align:left">static void AsyncLoadFromDataBase()</td>
+<td style="text-align:left">&#x4ECE;&#x6570;&#x636E;&#x5E93;&#x52A0;&#x8F7D;&#x4FE1;&#x606F;&#x5230;STL&#x5BB9;&#x5668;&#xFF08;&#x5F02;&#x6B65;&#xFF09;&#xFF0C;&#x4EE5;&#x540E;&#x83B7;&#x53D6;&#x4FE1;&#x606F;&#x5C31;&#x53EF;&#x4EE5;&#x8DF3;&#x8FC7;&#x6570;&#x636E;&#x5E93;&#x76F4;&#x63A5;&#x4ECE;&#x5185;&#x5B58;&#x83B7;&#x53D6;</td>
+</tr>
+<tr>
+<td style="text-align:left">static void WaitForReady()</td>
+<td style="text-align:left">&#x7B49;&#x5F85;&#x4F1A;&#x8BDD;&#x5E93;&#x5C31;&#x7EEA;(&#x548C;&#x4E0A;&#x9762;&#x7684;&#x65B9;&#x6CD5;&#x6210;&#x5BF9;&#xFF0C;&#x8C03;&#x7528;&#x8BE5;&#x65B9;&#x6CD5;&#x4F1A;&#x963B;&#x585E;&#x7EBF;&#x7A0B;&#xFF0C;&#x76F4;&#x5230;&#x5DF2;&#x7ECF;&#x4ECE;&#x6570;&#x636E;&#x5E93;&#x52A0;&#x8F7D;&#x5B8C;&#x6240;&#x9700;&#x6570;&#x636E;)</td>
+</tr>
+</tbody>
+</table>
+<p>&#x5177;&#x4F53;&#x4EE3;&#x7801;&#x7565;&#x3002;</p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="user.html" class="navigation navigation-prev " aria-label="Previous page: 用户类">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="queryresult.html" class="navigation navigation-next " aria-label="Next page: 查询结果类">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"会话类","level":"1.3.1.4.3","depth":4,"next":{"title":"查询结果类","level":"1.3.1.4.4","depth":4,"path":"logic/server/model/queryresult.md","ref":"logic/server/model/queryresult.md","articles":[]},"previous":{"title":"用户类","level":"1.3.1.4.2","depth":4,"path":"logic/server/model/user.md","ref":"logic/server/model/user.md","articles":[]},"dir":"ltr"},"config":{"plugins":["luda-toggle-chapters","luda-sticky-header","mermaid-flow","livereload"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"livereload":{},"search":{},"luda-sticky-header":{"myConfigKey":"it's the default value"},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"mermaid-flow":{},"highlight":{},"luda-toggle-chapters":{"myConfigKey":"it's the default value"},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","bak":"mermaid-flow","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"gitbook":"*"},"file":{"path":"logic/server/model/session.md","mtime":"2018-11-09T07:34:40.332Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-12-02T02:36:28.823Z"},"basePath":"../../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../../../gitbook/gitbook.js"></script>
+    <script src="../../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-luda-toggle-chapters/luda-toggle-chapters.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-luda-sticky-header/luda-sticky-header.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-livereload/plugin.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
