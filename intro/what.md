@@ -22,6 +22,10 @@
 
 
 
+（已提供演示程序，并架设好服务器，在安卓机上安装即可查看效果，下载地址：[https://github.com/stluda/TencentJobHunterClient/releases](https://github.com/stluda/TencentJobHunterClient/releases)）
+
+
+
 整个项目分为了服务端及客户端两部分：
 * 服务端(Linux)：C++11(Boost)、python
 * 客户端(Android)：Kotlin(RxJava2)
